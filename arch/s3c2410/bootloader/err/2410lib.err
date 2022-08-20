@@ -1,0 +1,3 @@
+"2410lib.c", line 212: Warning: C2873W: implicit return in non-void function
+"2410lib.c", line 238: Warning: C2873W: implicit return in non-void function
+2410lib.c: 2 warnings, 0 errors, 0 serious errors

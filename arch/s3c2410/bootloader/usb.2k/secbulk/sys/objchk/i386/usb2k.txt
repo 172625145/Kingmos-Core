@@ -1,0 +1,936 @@
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.562  	Default  	  	enter
+1036.562  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.578  	Default  	  	enter
+1036.578  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.750  	Default  	  	enter
+1036.750  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.922  	Default  	  	enter
+1036.922  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1036.953  	Default  	  	enter
+1036.953  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.125  	Default  	  	enter
+1037.125  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.281  	Default  	  	enter
+1037.281  	Default  	  	out (0)
+1037.453  	Default  	  	enter
+1037.453  	Default  	  	out (0)
+1037.453  	Default  	  	enter
+1037.453  	Default  	  	out (0)
+1037.453  	Default  	  	enter
+1037.453  	Default  	  	out (0)
+1037.453  	Default  	  	enter
+1037.453  	Default  	  	out (0)
+1037.453  	Default  	  	enter
+1037.453  	Default  	  	out (0)
+1037.453  	Default  	  	enter
+1037.453  	Default  	  	out (0)
+1037.609  	Default  	  	enter
+1037.609  	Default  	  	out (0)
+1037.609  	Default  	  	enter
+1037.609  	Default  	  	out (0)
+1037.609  	Default  	  	enter
+1037.609  	Default  	  	out (0)
+1037.640  	Default  	  	enter
+1037.640  	Default  	  	out (0)
+1037.640  	Default  	  	enter
+1037.640  	Default  	  	out (0)
+1037.640  	Default  	  	enter
+1037.640  	Default  	  	out (0)
+1037.640  	Default  	  	enter
+1037.640  	Default  	  	out (0)
+1037.640  	Default  	  	enter
+1037.640  	Default  	  	out (0)
+1037.640  	Default  	  	enter
+1037.640  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.781  	Default  	  	enter
+1037.781  	Default  	  	out (0)
+1037.953  	Default  	  	enter
+1037.953  	Default  	  	out (0)
+1037.953  	Default  	  	enter
+1037.953  	Default  	  	out (0)
+1037.953  	Default  	  	enter
+1037.953  	Default  	  	out (0)
+1037.953  	Default  	  	enter
+1037.953  	Default  	  	out (0)
+1037.953  	Default  	  	enter
+1037.953  	Default  	  	out (0)
+1037.953  	Default  	  	enter
+1037.953  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.109  	Default  	  	enter
+1038.109  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.265  	Default  	  	enter
+1038.265  	Default  	  	out (0)
+1038.422  	Default  	  	enter
+1038.422  	Default  	  	out (0)
+1038.422  	Default  	  	enter
+1038.422  	Default  	  	out (0)
+1038.422  	Default  	  	enter
+1038.422  	Default  	  	out (0)
+1038.422  	Default  	  	enter
+1038.422  	Default  	  	out (0)
+1038.422  	Default  	  	enter
+1038.422  	Default  	  	out (0)
+1038.422  	Default  	  	enter
+1038.422  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.578  	Default  	  	enter
+1038.578  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.750  	Default  	  	enter
+1038.750  	Default  	  	out (0)
+1038.906  	Default  	  	enter
+1038.906  	Default  	  	out (0)
+1038.906  	Default  	  	enter
+1038.906  	Default  	  	out (0)
+1038.906  	Default  	  	enter
+1038.906  	Default  	  	out (0)
+1038.906  	Default  	  	enter
+1038.906  	Default  	  	out (0)
+1038.906  	Default  	  	enter
+1038.906  	Default  	  	out (0)
+1038.906  	Default  	  	enter
+1038.906  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1038.937  	Default  	  	enter
+1038.937  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.109  	Default  	  	enter
+1039.109  	Default  	  	out (0)
+1039.265  	Default  	  	enter
+1039.265  	Default  	  	out (0)
+1039.265  	Default  	  	enter
+1039.265  	Default  	  	out (0)
+1039.265  	Default  	  	enter
+1039.265  	Default  	  	out (0)
+1039.265  	Default  	  	enter
+1039.265  	Default  	  	out (0)
+1039.265  	Default  	  	enter
+1039.265  	Default  	  	out (0)
+1039.265  	Default  	  	enter
+1039.265  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.422  	Default  	  	enter
+1039.422  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.578  	Default  	  	enter
+1039.578  	Default  	  	out (0)
+1039.734  	Default  	  	enter
+1039.734  	Default  	  	out (0)
+1039.734  	Default  	  	enter
+1039.734  	Default  	  	out (0)
+1039.734  	Default  	  	enter
+1039.734  	Default  	  	out (0)
+1039.734  	Default  	  	enter
+1039.734  	Default  	  	out (0)
+1039.734  	Default  	  	enter
+1039.734  	Default  	  	out (0)
+1039.734  	Default  	  	enter
+1039.734  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1039.890  	Default  	  	enter
+1039.890  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.047  	Default  	  	enter
+1040.047  	Default  	  	out (0)
+1040.203  	Default  	  	enter
+1040.203  	Default  	  	out (0)
+1040.203  	Default  	  	enter
+1040.203  	Default  	  	out (0)
+1040.203  	Default  	  	enter
+1040.203  	Default  	  	out (0)
+1040.203  	Default  	  	enter
+1040.203  	Default  	  	out (0)
+1040.203  	Default  	  	enter
+1040.203  	Default  	  	out (0)
+1040.203  	Default  	  	enter
+1040.203  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.359  	Default  	  	enter
+1040.359  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.515  	Default  	  	enter
+1040.515  	Default  	  	out (0)
+1040.672  	Default  	  	enter
+1040.672  	Default  	  	out (0)
+1040.672  	Default  	  	enter
+1040.672  	Default  	  	out (0)
+1040.672  	Default  	  	enter
+1040.672  	Default  	  	out (0)
+1040.672  	Default  	  	enter
+1040.672  	Default  	  	out (0)
+1040.672  	Default  	  	enter
+1040.672  	Default  	  	out (0)
+1040.672  	Default  	  	enter
+1040.672  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.703  	Default  	  	enter
+1040.703  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1040.875  	Default  	  	enter
+1040.875  	Default  	  	out (0)
+1041.047  	Default  	  	enter
+1041.047  	Default  	  	out (0)
+1041.047  	Default  	  	enter
+1041.047  	Default  	  	out (0)
+1041.047  	Default  	  	enter
+1041.047  	Default  	  	out (0)
+1041.047  	Default  	  	enter
+1041.047  	Default  	  	out (0)
+1041.047  	Default  	  	enter
+1041.047  	Default  	  	out (0)
+1041.047  	Default  	  	enter
+1041.047  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.203  	Default  	  	enter
+1041.203  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.359  	Default  	  	enter
+1041.359  	Default  	  	out (0)
+1041.515  	Default  	  	enter
+1041.515  	Default  	  	out (0)
+  	Monitor  	  	Driver's service database entry successfully removed.
+  	Monitor  	  	A new entry in the service database has been created for the driver.
+  	Monitor  	  	Select File | Start Driver to start the driver.
+   	Monitor  	  	 -- end -- 

@@ -1,0 +1,18 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+MODULENAME = hal_cpu
+MODULETYPE = LIBRARY
+
+
+MODULE_OPT = -O0
+
+
+LOCAL_FILES = \
+		gccmem.c \
+		load.c \
+		2410init.s \
+		cache.s \
+		table.s

@@ -1,0 +1,190 @@
+ secbulk
+
+ Timestamp is 4092188b (Fri Apr 30 17:12:43 2004)
+
+ Preferred load address is 00010000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00008a66H .text                   CODE
+ 0002:00000000 000000acH .idata$5                DATA
+ 0002:000000b0 00000c54H .rdata                  DATA
+ 0003:00000000 00000004H .data                   DATA
+ 0003:00000008 00000018H .bss                    DATA
+ 0004:00000000 0000003cH .idata$2                CODE
+ 0004:0000003c 00000014H .idata$3                CODE
+ 0004:00000050 000000acH .idata$4                CODE
+ 0004:000000fc 00000354H .idata$6                CODE
+ 0005:00000000 00000058H .rsrc$01                DATA
+ 0005:00000060 00000360H .rsrc$02                DATA
+
+  Address         Publics by Value              Rva+Base     Lib:Object
+
+ 0001:0000015d       _BulkUsb_GetRegistryDword@12 0001041d f   busbdbg.obj
+ 0001:00000305       _BULKUSB_ExAllocatePool@8  000105c5 f   busbdbg.obj
+ 0001:00000387       _BULKUSB_ExFreePool@4      00010647 f   busbdbg.obj
+ 0001:000004d2       _DriverEntry@8             00010792 f   bulkusb.obj
+ 0001:000006b1       _BulkUsb_ProcessSysControlIrp@8 00010971 f   bulkusb.obj
+ 0001:00000825       _BulkUsb_Unload@4          00010ae5 f   bulkusb.obj
+ 0001:0000092e       _BulkUsb_SymbolicLink@8    00010bee f   bulkusb.obj
+ 0001:00000c08       _BulkUsb_CreateDeviceObject@12 00010ec8 f   bulkusb.obj
+ 0001:00000eeb       _BulkUsb_CallUSBD@8        000111ab f   bulkusb.obj
+ 0001:000011d5       _BulkUsb_ConfigureDevice@4 00011495 f   bulkusb.obj
+ 0001:0000168d       _BulkUsb_SelectInterface@8 0001194d f   bulkusb.obj
+ 0001:00001bd7       _BulkUsb_ResetPipe@8       00011e97 f   bulkusb.obj
+ 0001:00001ce5       _BulkUsb_DecrementIoCount@4 00011fa5 f   bulkusb.obj
+ 0001:00001e23       _BulkUsb_IncrementIoCount@4 000120e3 f   bulkusb.obj
+ 0001:0000244f       _BulkUsb_ProcessPnPIrp@8   0001270f f   sbulkpnp.obj
+ 0001:00002bd4       _BulkUsb_PnPAddDevice@8    00012e94 f   sbulkpnp.obj
+ 0001:0000318b       _BulkUsb_StartDevice@4     0001344b f   sbulkpnp.obj
+ 0001:000037a7       _BulkUsb_RemoveDevice@4    00013a67 f   sbulkpnp.obj
+ 0001:000039a0       _BulkUsb_StopDevice@4      00013c60 f   sbulkpnp.obj
+ 0001:00003a72       _BulkUsb_IrpCompletionRoutine@12 00013d32 f   sbulkpnp.obj
+ 0001:000040f9       _BulkUsb_ProcessPowerIrp@8 000143b9 f   bulkpwr.obj
+ 0001:000046f1       _BulkUsb_PoRequestCompletion@20 000149b1 f   bulkpwr.obj
+ 0001:00004a00       _BulkUsb_PowerIrp_Complete@12 00014cc0 f   bulkpwr.obj
+ 0001:00004db3       _BulkUsb_SelfSuspendOrActivate@8 00015073 f   bulkpwr.obj
+ 0001:000050e1       _BulkUsb_SelfRequestPowerIrp@8 000153a1 f   bulkpwr.obj
+ 0001:000052ba       _BulkUsb_PoSelfRequestCompletion@20 0001557a f   bulkpwr.obj
+ 0001:00005413       _BulkUsb_SetDevicePowerState@8 000156d3 f   bulkpwr.obj
+ 0001:0000567a       _BulkUsb_QueryCapabilities@8 0001593a f   bulkpwr.obj
+ 0001:0000583a       _BulkUsb_ProcessIOCTL@8    00015afa f   ioctlblk.obj
+ 0001:000059ce       _BulkUsb_ResetDevice@4     00015c8e f   ioctlblk.obj
+ 0001:00005c39       _BulkUsb_GetPortStatus@8   00015ef9 f   ioctlblk.obj
+ 0001:00005fb5       _BulkUsb_ResetParentPort@4 00016275 f   ioctlblk.obj
+ 0001:000064ee       _BulkUsb_SingleUrbReadWrite@12 000167ae f   ocrwblk.obj
+ 0001:00007087       _BulkUsb_StagedReadWrite@12 00017347 f   ocrwblk.obj
+ 0001:0000787e       _BulkUsb_BuildAsyncRequest@16 00017b3e f   ocrwblk.obj
+ 0001:00007c6e       _BulkUsb_AsyncReadWrite_Complete@12 00017f2e f   ocrwblk.obj
+ 0001:00007f0d       _BulkUsb_SimpleReadWrite_Complete@12 000181cd f   ocrwblk.obj
+ 0001:00007fb4       _BulkUsb_Read@8            00018274 f   ocrwblk.obj
+ 0001:00007fc8       _BulkUsb_Write@8           00018288 f   ocrwblk.obj
+ 0001:00008052       _BulkUsb_PipeWithName@8    00018312 f   ocrwblk.obj
+ 0001:0000824e       _BulkUsb_Close@8           0001850e f   ocrwblk.obj
+ 0001:0000841a       _BulkUsb_Create@8          000186da f   ocrwblk.obj
+ 0001:000086f0       _BulkUsb_CancelPendingIo@4 000189b0 f   ocrwblk.obj
+ 0001:000088a5       _BulkUsb_AbortPipes@4      00018b65 f   ocrwblk.obj
+ 0001:000089f9       _BulkUsb_CanAcceptIoRequests@4 00018cb9 f   ocrwblk.obj
+ 0001:00008a5a       _DbgPrint                  00018d1a f   wdm:NTOSKRNL.EXE
+ 0001:00008a60       _DbgBreakPoint@0           00018d20 f   wdm:NTOSKRNL.EXE
+ 0002:00000000       __imp_@KfReleaseSpinLock@8 00018d40     wdm:HAL.DLL
+ 0002:00000004       __imp__KeGetCurrentIrql@0  00018d44     wdm:HAL.DLL
+ 0002:00000008       __imp_@KfAcquireSpinLock@4 00018d48     wdm:HAL.DLL
+ 0002:0000000c       \177HAL_NULL_THUNK_DATA    00018d4c     wdm:HAL.DLL
+ 0002:00000010       __imp__ExFreePool@4        00018d50     wdm:NTOSKRNL.EXE
+ 0002:00000014       __imp__ExAllocatePoolWithTag@12 00018d54     wdm:NTOSKRNL.EXE
+ 0002:00000018       __imp__RtlAssert@16        00018d58     wdm:NTOSKRNL.EXE
+ 0002:0000001c       __imp__IoSetDeviceInterfaceState@8 00018d5c     wdm:NTOSKRNL.EXE
+ 0002:00000020       __imp__IoRegisterDeviceInterface@16 00018d60     wdm:NTOSKRNL.EXE
+ 0002:00000024       __imp__DbgPrint            00018d64     wdm:NTOSKRNL.EXE
+ 0002:00000028       __imp_@IofCallDriver@8     00018d68     wdm:NTOSKRNL.EXE
+ 0002:0000002c       __imp__RtlFreeUnicodeString@4 00018d6c     wdm:NTOSKRNL.EXE
+ 0002:00000030       __imp__KeInitializeEvent@12 00018d70     wdm:NTOSKRNL.EXE
+ 0002:00000034       __imp__IoCreateDevice@28   00018d74     wdm:NTOSKRNL.EXE
+ 0002:00000038       __imp__KeWaitForSingleObject@20 00018d78     wdm:NTOSKRNL.EXE
+ 0002:0000003c       __imp__IoBuildDeviceIoControlRequest@36 00018d7c     wdm:NTOSKRNL.EXE
+ 0002:00000040       __imp__memmove             00018d80     wdm:NTOSKRNL.EXE
+ 0002:00000044       __imp__wcslen              00018d84     wdm:NTOSKRNL.EXE
+ 0002:00000048       __imp__DbgBreakPoint@0     00018d88     wdm:NTOSKRNL.EXE
+ 0002:0000004c       __imp__KeInitializeSpinLock@4 00018d8c     wdm:NTOSKRNL.EXE
+ 0002:00000050       __imp__KeSetEvent@12       00018d90     wdm:NTOSKRNL.EXE
+ 0002:00000054       __imp__RtlQueryRegistryValues@20 00018d94     wdm:NTOSKRNL.EXE
+ 0002:00000058       __imp_@IofCompleteRequest@8 00018d98     wdm:NTOSKRNL.EXE
+ 0002:0000005c       __imp__IoDeleteDevice@4    00018d9c     wdm:NTOSKRNL.EXE
+ 0002:00000060       __imp__IoDetachDevice@4    00018da0     wdm:NTOSKRNL.EXE
+ 0002:00000064       __imp__IoAttachDeviceToDeviceStack@8 00018da4     wdm:NTOSKRNL.EXE
+ 0002:00000068       __imp__RtlInitUnicodeString@8 00018da8     wdm:NTOSKRNL.EXE
+ 0002:0000006c       __imp__PoRequestPowerIrp@24 00018dac     wdm:NTOSKRNL.EXE
+ 0002:00000070       __imp__PoCallDriver@8      00018db0     wdm:NTOSKRNL.EXE
+ 0002:00000074       __imp__PoStartNextPowerIrp@4 00018db4     wdm:NTOSKRNL.EXE
+ 0002:00000078       __imp__IoFreeIrp@4         00018db8     wdm:NTOSKRNL.EXE
+ 0002:0000007c       __imp__IoAllocateIrp@8     00018dbc     wdm:NTOSKRNL.EXE
+ 0002:00000080       __imp_@InterlockedDecrement@4 00018dc0     wdm:NTOSKRNL.EXE
+ 0002:00000084       __imp__IoBuildPartialMdl@16 00018dc4     wdm:NTOSKRNL.EXE
+ 0002:00000088       __imp__IoAllocateMdl@20    00018dc8     wdm:NTOSKRNL.EXE
+ 0002:0000008c       __imp__IoFreeMdl@4         00018dcc     wdm:NTOSKRNL.EXE
+ 0002:00000090       __imp__IoCancelIrp@4       00018dd0     wdm:NTOSKRNL.EXE
+ 0002:00000094       __imp_@InterlockedIncrement@4 00018dd4     wdm:NTOSKRNL.EXE
+ 0002:00000098       \177NTOSKRNL_NULL_THUNK_DATA 00018dd8     wdm:NTOSKRNL.EXE
+ 0002:0000009c       __imp__USBD_CreateConfigurationRequest@8 00018ddc     usbd:USBD.SYS
+ 0002:000000a0       __imp__USBD_GetUSBDIVersion@4 00018de0     usbd:USBD.SYS
+ 0002:000000a4       __imp__USBD_ParseConfigurationDescriptorEx@28 00018de4     usbd:USBD.SYS
+ 0002:000000a8       \177USBD_NULL_THUNK_DATA   00018de8     usbd:USBD.SYS
+ 0002:00000208       ??_C@_0BD@HNLO@PowerDeviceMaximum?$AA@ 00018f48     busbdbg.obj
+ 0002:0000021c       ??_C@_0O@MPNK@PowerDeviceD3?$AA@ 00018f5c     busbdbg.obj
+ 0002:0000022c       ??_C@_0O@GFEN@PowerDeviceD2?$AA@ 00018f6c     busbdbg.obj
+ 0002:0000023c       ??_C@_0O@JKPE@PowerDeviceD1?$AA@ 00018f7c     busbdbg.obj
+ 0002:0000024c       ??_C@_0O@DAGD@PowerDeviceD0?$AA@ 00018f8c     busbdbg.obj
+ 0002:0000025c       ??_C@_0BH@OAIA@PowerDeviceUnspecified?$AA@ 00018f9c     busbdbg.obj
+ 0002:00000274       ??_C@_0BD@GFLO@PowerSystemMaximum?$AA@ 00018fb4     busbdbg.obj
+ 0002:00000288       ??_C@_0BE@ECLL@PowerSystemShutdown?$AA@ 00018fc8     busbdbg.obj
+ 0002:0000029c       ??_C@_0BF@CJOB@PowerSystemHibernate?$AA@ 00018fdc     busbdbg.obj
+ 0002:000002b4       ??_C@_0BF@MODC@PowerSystemSleeping3?$AA@ 00018ff4     busbdbg.obj
+ 0002:000002cc       ??_C@_0BF@GEKF@PowerSystemSleeping2?$AA@ 0001900c     busbdbg.obj
+ 0002:000002e4       ??_C@_0BF@JLBM@PowerSystemSleeping1?$AA@ 00019024     busbdbg.obj
+ 0002:000002fc       ??_C@_0BD@NDKJ@PowerSystemWorking?$AA@ 0001903c     busbdbg.obj
+ 0002:00000310       ??_C@_0BH@JNNM@PowerSystemUnspecified?$AA@ 00019050     busbdbg.obj
+ 0002:00000328       ??_C@_0BI@DPHM@IRP_MN_SURPRISE_REMOVAL?$AA@ 00019068     busbdbg.obj
+ 0002:00000340       ??_C@_0CB@KAJ@IRP_MN_DEVICE_USAGE_NOTIFICATION@ 00019080     busbdbg.obj
+ 0002:00000364       ??_C@_0BN@INCI@IRP_MN_QUERY_BUS_INFORMATION?$AA@ 000190a4     busbdbg.obj
+ 0002:00000384       ??_C@_0BO@HDMB@IRP_MN_QUERY_PNP_DEVICE_STATE?$AA@ 000190c4     busbdbg.obj
+ 0002:000003a4       ??_C@_0BA@CAHA@IRP_MN_QUERY_ID?$AA@ 000190e4     busbdbg.obj
+ 0002:000003b4       ??_C@_0BA@OKEC@IRP_MN_SET_LOCK?$AA@ 000190f4     busbdbg.obj
+ 0002:000003c4       ??_C@_0N@JHBK@IRP_MN_EJECT?$AA@ 00019104     busbdbg.obj
+ 0002:000003d4       ??_C@_0BE@EFAO@IRP_MN_WRITE_CONFIG?$AA@ 00019114     busbdbg.obj
+ 0002:000003e8       ??_C@_0BD@ICKD@IRP_MN_READ_CONFIG?$AA@ 00019128     busbdbg.obj
+ 0002:000003fc       ??_C@_0CE@EHHF@IRP_MN_FILTER_RESOURCE_REQUIREME@ 0001913c     busbdbg.obj
+ 0002:00000420       ??_C@_0BJ@EFDI@IRP_MN_QUERY_DEVICE_TEXT?$AA@ 00019160     busbdbg.obj
+ 0002:0000043c       ??_C@_0CD@JGIK@IRP_MN_QUERY_RESOURCE_REQUIREMEN@ 0001917c     busbdbg.obj
+ 0002:00000460       ??_C@_0BH@NLOI@IRP_MN_QUERY_RESOURCES?$AA@ 000191a0     busbdbg.obj
+ 0002:00000478       ??_C@_0BK@OENO@IRP_MN_QUERY_CAPABILITIES?$AA@ 000191b8     busbdbg.obj
+ 0002:00000494       ??_C@_0BH@FIBO@IRP_MN_QUERY_INTERFACE?$AA@ 000191d4     busbdbg.obj
+ 0002:000004ac       ??_C@_0BO@BNCN@IRP_MN_QUERY_DEVICE_RELATIONS?$AA@ 000191ec     busbdbg.obj
+ 0002:000004cc       ??_C@_0BK@GFJB@IRP_MN_CANCEL_STOP_DEVICE?$AA@ 0001920c     busbdbg.obj
+ 0002:000004e8       ??_C@_0BJ@PACP@IRP_MN_QUERY_STOP_DEVICE?$AA@ 00019228     busbdbg.obj
+ 0002:00000504       ??_C@_0BD@BDCC@IRP_MN_STOP_DEVICE?$AA@ 00019244     busbdbg.obj
+ 0002:00000518       ??_C@_0BM@JPLL@IRP_MN_CANCEL_REMOVE_DEVICE?$AA@ 00019258     busbdbg.obj
+ 0002:00000534       ??_C@_0BF@GMPC@IRP_MN_REMOVE_DEVICE?$AA@ 00019274     busbdbg.obj
+ 0002:0000054c       ??_C@_0BL@CLML@IRP_MN_QUERY_REMOVE_DEVICE?$AA@ 0001928c     busbdbg.obj
+ 0002:00000568       ??_C@_0BE@IBKL@IRP_MN_START_DEVICE?$AA@ 000192a8     busbdbg.obj
+ 0002:0000057c       ??_C@_0L@BEII@IRP_MJ_PNP?$AA@ 000192bc     busbdbg.obj
+ 0002:00000588       ??_C@_0BB@DPBP@IRP_MJ_SET_QUOTA?$AA@ 000192c8     busbdbg.obj
+ 0002:0000059c       ??_C@_0BD@ELL@IRP_MJ_QUERY_QUOTA?$AA@ 000192dc     busbdbg.obj
+ 0002:000005b0       ??_C@_0BF@BJBK@IRP_MJ_DEVICE_CHANGE?$AA@ 000192f0     busbdbg.obj
+ 0002:000005c8       ??_C@_0BG@MDKH@IRP_MJ_SYSTEM_CONTROL?$AA@ 00019308     busbdbg.obj
+ 0002:000005e0       ??_C@_0N@LCHJ@IRP_MJ_POWER?$AA@ 00019320     busbdbg.obj
+ 0002:000005f0       ??_C@_0BE@MMFL@IRP_MJ_SET_SECURITY?$AA@ 00019330     busbdbg.obj
+ 0002:00000604       ??_C@_0BG@NGJE@IRP_MJ_QUERY_SECURITY?$AA@ 00019344     busbdbg.obj
+ 0002:0000061c       ??_C@_0BH@BAKD@IRP_MJ_CREATE_MAILSLOT?$AA@ 0001935c     busbdbg.obj
+ 0002:00000634       ??_C@_0P@FJPB@IRP_MJ_CLEANUP?$AA@ 00019374     busbdbg.obj
+ 0002:00000644       ??_C@_0BE@MIAJ@IRP_MJ_LOCK_CONTROL?$AA@ 00019384     busbdbg.obj
+ 0002:00000658       ??_C@_0BA@FLJI@IRP_MJ_SHUTDOWN?$AA@ 00019398     busbdbg.obj
+ 0002:00000668       ??_C@_0BP@OLMJ@IRP_MJ_INTERNAL_DEVICE_CONTROL?$AA@ 000193a8     busbdbg.obj
+ 0002:00000688       ??_C@_0BG@CLLP@IRP_MJ_DEVICE_CONTROL?$AA@ 000193c8     busbdbg.obj
+ 0002:000006a0       ??_C@_0BL@CBFM@IRP_MJ_FILE_SYSTEM_CONTROL?$AA@ 000193e0     busbdbg.obj
+ 0002:000006bc       ??_C@_0BJ@LBBJ@IRP_MJ_DIRECTORY_CONTROL?$AA@ 000193fc     busbdbg.obj
+ 0002:000006d8       ??_C@_0BO@PIHJ@IRP_MJ_SET_VOLUME_INFORMATION?$AA@ 00019418     busbdbg.obj
+ 0002:000006f8       ??_C@_0CA@HODN@IRP_MJ_QUERY_VOLUME_INFORMATION?$AA@ 00019438     busbdbg.obj
+ 0002:00000718       ??_C@_0BF@BPJM@IRP_MJ_FLUSH_BUFFERS?$AA@ 00019458     busbdbg.obj
+ 0002:00000730       ??_C@_0O@BKJN@IRP_MJ_SET_EA?$AA@ 00019470     busbdbg.obj
+ 0002:00000740       ??_C@_0BA@PAEM@IRP_MJ_QUERY_EA?$AA@ 00019480     busbdbg.obj
+ 0002:00000750       ??_C@_0BH@FHGM@IRP_MJ_SET_INFORMATION?$AA@ 00019490     busbdbg.obj
+ 0002:00000768       ??_C@_0BJ@BAL@IRP_MJ_QUERY_INFORMATION?$AA@ 000194a8     busbdbg.obj
+ 0002:00000784       ??_C@_0N@MABG@IRP_MJ_WRITE?$AA@ 000194c4     busbdbg.obj
+ 0002:00000794       ??_C@_0M@COKB@IRP_MJ_READ?$AA@ 000194d4     busbdbg.obj
+ 0002:000007a0       ??_C@_0N@GPKJ@IRP_MJ_CLOSE?$AA@ 000194e0     busbdbg.obj
+ 0002:000007b0       ??_C@_0BJ@NEL@IRP_MJ_CREATE_NAMED_PIPE?$AA@ 000194f0     busbdbg.obj
+ 0002:000007cc       ??_C@_0O@NJLE@IRP_MJ_CREATE?$AA@ 0001950c     busbdbg.obj
+ 0002:000007e0       _GUID_CLASS_I82930_BULK    00019520     bulkusb.obj
+ 0003:00000000       _gpDbg                     00019a60     busbdbg.obj
+ 0003:00000008       _gDebugLevel               00019a68     busbdbg.obj
+ 0003:0000000c       _gExAllocCount             00019a6c     busbdbg.obj
+ 0003:00000010       _gDbgBuf                   00019a70     busbdbg.obj
+ 0004:00000000       __IMPORT_DESCRIPTOR_NTOSKRNL 00019a80     wdm:NTOSKRNL.EXE
+ 0004:00000014       __IMPORT_DESCRIPTOR_HAL    00019a94     wdm:HAL.DLL
+ 0004:00000028       __IMPORT_DESCRIPTOR_USBD   00019aa8     usbd:USBD.SYS
+ 0004:0000003c       __NULL_IMPORT_DESCRIPTOR   00019abc     wdm:NTOSKRNL.EXE
+
+ entry point at        0001:000004d2
+
+ Static symbols
+

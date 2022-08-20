@@ -1,0 +1,53 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+MODULENAME=bootLoader
+#MODULENAME=bootloader
+MODULETYPE=PROGRAM
+#TARGETNAME=BootLoader.exe
+DYNAMICLIBS=
+STATICLIBS= \
+		$(__PUBLIC_LIBS)/libstdlib.a \
+		$(__PUBLIC_LIBS)/libgcc.a
+LINKSCRIPT = core.mlt
+MODULE_OPT = -O1
+#LOCAL_FILES=target.c \
+#			bootrun.c \
+#			boottftp.c \
+#			main.c \
+#			oemeth.c \
+#			format.c \
+#			debug.c \
+#			gccmem.c \
+#			vectors.s
+			
+LOCAL_FILES=2410lib.c \
+			memtest.c \
+			mmu.c \
+			profile.c \
+			gccmem.c \
+			u241mon.c \
+			usbin.c \
+			usblib.c \
+			usbmain.c \
+			usbout.c \
+			usbsetup.c \
+			kinit.c \
+			2410init.s \
+			2410slib.s \
+			irq.c
+
+
+			   		 
+MODULE_INCLUDES = ./include
+MAPFILE=1
+KERNELMODULE = 1
+
+#MEMCONFIG = $(__AMBO_OS_HOME)/arch/s3c2410/bootloader/config/memory.con
+MEMCONFIG = ./config/memory.con
+
+#CODEADDR = 0x0
+#DATADDR  = 0xc000000
+#EXEENTRY = _startup

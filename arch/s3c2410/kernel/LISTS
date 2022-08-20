@@ -1,0 +1,5 @@
+LISTS =  \
+    hal \
+    kernel_exe
+	
+

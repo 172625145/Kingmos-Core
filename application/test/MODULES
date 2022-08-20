@@ -1,0 +1,18 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+MODULENAME = test
+
+MODULETYPE = PROGRAM
+
+LOCAL_DYNAMICLIBS = \
+		$(__SDK_TARGETS)/libbase.so 
+
+LOCAL_STATICLIBS = \
+		$(__SDK_LIBS)/libclassdef.a 
+
+LOCAL_FILES = \
+		test.c
+

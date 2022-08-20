@@ -1,0 +1,208 @@
+void	ser_HandleInterrupt( LPVOID  pHead )
+{
+    PSERDRV_INFO	pInfoDrv = (PSERDRV_INFO)pHead;
+    PVOID			pHeadDev = pInfoDrv->pHeadDev;
+    PVTBL_ARCH_SER	pFunTbl = pInfoDrv->pFunTbl;
+    DWORD			dwIntr;
+
+	//------------------------- for INTR_RX begin
+	char		XoffChar;
+	char		XonChar;
+	WORD		wXXXX;
+
+    BOOL		RxDataAvail;
+	LONG		nLenRx_Write;
+	LPBYTE		pBufWrite;
+	
+	PRXINFO		lpInfoRxBuf;
+	register	LONG*		pnRead;
+	register	LONG*		pnWrite;
+	register	LONG*		pnCounts;
+	register	LONG*		pnLength;
+
+	lpInfoRxBuf = &pInfoDrv->InfoRxBuf;
+	pnRead		= &( lpInfoRxBuf->nRead );
+	pnWrite		= &( lpInfoRxBuf->nWrite );
+	pnCounts    = &( lpInfoRxBuf->nCounts );
+	pnLength	= &( lpInfoRxBuf->nLength );
+
+	XoffChar = pInfoDrv->dcb.XoffChar;
+	XonChar  = pInfoDrv->dcb.XonChar;
+	//------------------------- for INTR_RX end
+
+	if ( pInfoDrv->pAccessOwner )
+		INTR_CNT_INC(pInfoDrv->pAccessOwner);
+	
+	//csEnter_RxResize( lpInfoRxBuf );	//功能： 防止 rxBuffer重新分配 和 中断重入
+	dwIntr = INTR_NONE;
+	RxDataAvail = FALSE;
+	while( dwIntr=pFunTbl->lpFnIntrTypeQuery(pHeadDev) )
+	{
+		if( dwIntr & INTR_RX )
+		{
+			//InfoRxBuf.CS_buf: 防止 realloc rx queue size
+			csEnter_RxResize( lpInfoRxBuf );
+			//
+			//获取 信息---nCounts and nWrite
+			csEnter_Rx(pInfoDrv);
+			//
+			if( *pnWrite < *pnRead )
+			{
+				nLenRx_Write = (*pnRead - *pnWrite);
+			}
+			else if( *pnCounts == *pnLength )
+			{
+				nLenRx_Write = 0;
+				//for debug here!
+				//*pnRead   = 0;
+				//*pnWrite  = 0;
+				//*pnCounts = 0;
+				//nLenRx_Write = *pnLength;
+			}
+			else
+			{
+				nLenRx_Write = (*pnLength - *pnWrite);
+			}
+			csLeave_Rx(pInfoDrv);
+
+			//接收/丢弃 字符
+			if( nLenRx_Write==0 )
+			{
+				//丢弃 字符
+				BYTE    TempBuf[16];//16
+				nLenRx_Write = 16;
+				pFunTbl->lpFnRecv( pHeadDev, TempBuf, &nLenRx_Write );
+				EdbgOutputDebugString( "dis[%d]", nLenRx_Write );
+				nLenRx_Write = 0;
+			}
+			else
+			{
+				//接收 字符
+				pBufWrite = lpInfoRxBuf->pRxBuf + (*pnWrite);
+				pFunTbl->lpFnRecv( pHeadDev, pBufWrite, &nLenRx_Write );
+				if( nLenRx_Write )
+				{
+					//软件握手---检测是否收到通知字符(Xoff/Xon)
+					if( pInfoDrv->dcb.fOutX )
+					{
+						register	LPBYTE		pBufWrite_tmp;
+						LONG        nLenMove;
+						
+						pBufWrite_tmp = pBufWrite;
+						nLenMove = nLenRx_Write;
+						//软件握手字符Xoff/Xon查找：
+						//1。Xoff/Xon不属于正常数据，要丢弃
+						//2。决定---设置 停止发送(Xoff)/继续发送(Xon) 的标志---fStopXmit
+						while( nLenMove>0 )
+						{
+							nLenMove --;
+							if( *pBufWrite_tmp==XoffChar )
+							{
+								EdbgOutputDebugString( "Xoff\r\n" );
+								//停止发送(because received a Xoff)
+								pInfoDrv->fStopXmit = 1;
+								//丢弃Xoff
+								if( nLenMove )
+									memmove( pBufWrite_tmp, pBufWrite_tmp+1, nLenMove );	//nLenRx_Write - nIndex - 1
+								nLenRx_Write--;
+							}
+							else if( *pBufWrite_tmp==XonChar )
+							{
+								EdbgOutputDebugString( "Xon\r\n" );
+								//继续发送(because received a Xon)
+								pInfoDrv->fStopXmit = 0;
+								//丢弃Xon
+								if( nLenMove )
+									memmove( pBufWrite_tmp, pBufWrite_tmp+1, nLenMove );
+								nLenRx_Write--;
+								//若收到Xon，则尝试发送数据
+								dwIntr |= INTR_TX;
+							}
+							else
+							{
+								pBufWrite_tmp ++;
+							}
+						}//for  for ( nLenMove=0; nLenMove < nLenRx_Write; )
+					}//for  if ( pInfoDrv->dcb.fOutX )
+
+					//if( nLenRx_Write )
+					{
+						//设置 信息---nCounts and nWrite
+						csEnter_Rx( pInfoDrv );
+
+						//g_nCountRx_Debug += nLenRx_Write;	//for debug
+						(*pnCounts)+= nLenRx_Write;
+						(*pnWrite) += nLenRx_Write;
+						(*pnWrite) %= (*pnLength);
+
+						csLeave_Rx( pInfoDrv );
+
+						RxDataAvail = TRUE;
+					}
+				}
+			}
+			//
+			if( pInfoDrv->fFlow_RxBuf )
+			{
+				//RxBuf剩余空间
+				csEnter_Rx( pInfoDrv );
+				nLenRx_Write = *pnLength - *pnCounts;
+				csLeave_Rx( pInfoDrv );
+				//
+				//硬件握手---判断是否要通知对方( 设置Dtr/Rts告诉对方要---停止发送数据 )
+				//硬件握手允许、没有Dtr/Rts通知对方、RxBuf剩余空间 不足
+				//if( 4 * nLenRx_Write > 3 * (*pnLength) ) 
+				if( nLenRx_Write <= pInfoDrv->dwHWOffLim )
+				{
+					if( (pInfoDrv->dcb.fDtrControl==DTR_CONTROL_HANDSHAKE) && (!pInfoDrv->fSentDtrOff) )
+					{
+						pInfoDrv->fSentDtrOff = 1;
+						pFunTbl->lpFnClearSingalDTR(pHeadDev);
+					}
+					if( (pInfoDrv->dcb.fRtsControl==RTS_CONTROL_HANDSHAKE) && (!pInfoDrv->fSentRtsOff) )
+					{
+						pInfoDrv->fSentRtsOff = 1;
+						pFunTbl->lpFnClearSingalRTS(pHeadDev);
+					}
+				}
+				//
+				//软件握手---判断是否要通知对方( 发送Xoff告诉对方要---停止发送数据 )
+				//软件握手允许、没有Xoff通知对方、RxBuf剩余空间 不足 接受极限XoffLim
+				if( nLenRx_Write <= pInfoDrv->dcb.XoffLim )
+				{
+					if( pInfoDrv->dcb.fInX && !(pInfoDrv->fSentXoff) )
+					{
+						pInfoDrv->fSentXoff = 1;
+						pFunTbl->lpFnXmitChar( pHeadDev, XoffChar);
+					}
+				}
+			}
+			//
+			csLeave_RxResize( lpInfoRxBuf );
+		}//for if ( dwIntr & INTR_RX ) 
+
+		if ( dwIntr & INTR_TX )
+		{
+			ser_DoTxData( pInfoDrv );
+		}
+		if ( dwIntr & INTR_MODEM ) 
+		{
+			pFunTbl->lpFnIntrHandleModem(pHeadDev);
+		}
+		if ( dwIntr & INTR_LINE )
+		{
+			pFunTbl->lpFnIntrHandleLine(pHeadDev);
+		}
+	}
+	//csLeave_RxResize( lpInfoRxBuf );
+	
+	//EV_RXCHAR
+	if( RxDataAvail )
+	{
+		SetEvent(pInfoDrv->hEvtRead);
+		ser_NotifyCommEvent( pInfoDrv, EV_RXCHAR );
+	}
+	
+	if ( pInfoDrv->pAccessOwner )
+		INTR_CNT_DEC(pInfoDrv->pAccessOwner);
+}

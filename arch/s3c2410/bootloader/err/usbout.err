@@ -1,0 +1,4 @@
+"usbout.c", line 165: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+"usbout.c", line 240: Warning: C2871W: static 'tempBuf' declared but not used
+"usbout.c", line 240: Warning: C2871W: static 'PrintEpoPkt' declared but not used
+usbout.c: 3 warnings, 0 errors, 0 serious errors

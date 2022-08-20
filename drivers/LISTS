@@ -1,0 +1,11 @@
+LISTS =  \
+      ramdisk \
+ifeq ($(INLINE_PROGRAM),1)
+      kfsromdisk \
+else
+      romdisk \
+endif
+	  com \
+  	fontcfg \
+  	touch \
+      drvlib

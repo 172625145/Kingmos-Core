@@ -1,0 +1,14 @@
+LISTS = \
+ifeq ( $(INLINE_PROGRAM), 1 )
+    componentlib \
+else
+    base \
+	user \
+endif
+	keyboard \
+	desktop \
+	shell \
+	usualapi \
+	com \
+
+	

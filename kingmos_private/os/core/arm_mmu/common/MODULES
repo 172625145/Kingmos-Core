@@ -1,0 +1,29 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+MODULENAME = arm_common
+MODULETYPE = LIBRARY
+
+
+LOCAL_DYNAMICLIBS = 
+
+
+LOCAL_FILES = \
+		inittss.c \
+		sysintr.c \
+		switch.c
+
+ifeq ($(VIRTUAL_MEM),1)
+LOCAL_FILES += \
+		single_armpage.c \
+		load.c \
+		initpte.c \
+		romfs.c \
+		helper.c \
+		irq.c \
+		romfs.c
+else
+        coredump.c
+endif

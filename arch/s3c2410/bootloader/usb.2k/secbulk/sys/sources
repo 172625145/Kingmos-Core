@@ -1,0 +1,19 @@
+TARGETNAME=secbulk
+TARGETTYPE=DRIVER
+DRIVERTYPE=WDM
+
+TARGETPATH=obj
+
+TARGETLIBS=$(DDK_LIB_PATH)\usbd.lib
+
+USE_MAPSYM=1
+
+SOURCES=          \
+        BulkUsb.rc \
+        BusbDbg.c \
+        BulkUsb.c  \
+        SBulkPnP.c \
+        BulkPwr.c \
+        IoctlBlk.c   \
+        OcrwBlk.c
+

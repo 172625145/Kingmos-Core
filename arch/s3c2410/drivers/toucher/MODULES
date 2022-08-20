@@ -1,0 +1,41 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+MODULENAME = toucher
+MODULETYPE = LIBRARY
+
+
+LOCAL_DYNAMICLIBS = 
+ifeq ($(PLAT_SA1110DB),1)
+
+
+MODULE_CDEFINES += -DSA1110DB
+else
+
+
+MODULE_CDEFINES += -DSA1100MM
+endif
+ifeq ($(PLAT_SA1101),1)
+
+
+MODULE_CDEFINES += -DUSING_SA1101 -DUSING_SA11X1
+else
+
+
+MODULE_CDEFINES += -DUSING_SA1111 -DUSING_SA11X1
+endif
+ifeq ($(PLAT_SA1111DB),1)
+
+
+MODULE_CDEFINES += -DSA1111DB
+else
+
+
+MODULE_CDEFINES += -DSA1101CB
+endif
+
+
+LOCAL_FILES = \
+		toucher.c

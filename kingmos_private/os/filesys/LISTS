@@ -1,0 +1,6 @@
+LISTS =  \
+	kmfs \
+	fsmain \
+	romfs \
+	filelib
+

@@ -1,0 +1,37 @@
+;这部分是定义该平台的内存分布，那些作为ROM,那些作为RAM....
+LAYOUT
+;	内存属性		开始地址	长度
+
+
+	RAMIMAGE  =:	0x0		  0x200000
+	;RAM	   =:	0x0C000000   0x300000
+;	RAM	   =:	0x32000000   0x3000000
+    RAM	   =:	0x33ff0000   0x4000
+
+	
+
+;这部分定义生成ROM映像文件时的配置值
+SETTING
+;	变量 =： 变量值
+
+	DOWNLOAD=:OFF; ON		;下载
+	WRITEFLASH=:ON;  OFF		;烧入FLASH
+	
+	BOOTJUMP=:0x0		;执行地址
+
+    AUTOSIZE=:OFF
+
+    COMPRESSION=:OFF
+    KERNELFIXUPS=:ON
+	
+    ROMSTART=:0x0
+    ROMWIDTH=:0x20 ;32
+
+	;ROMSIZE=:0x200000		;;2 MB
+	ROMSIZE=:0x8000		;;2 MB
+
+	FSRAMPERCENT=:0x32 ;50		;%50 of RAM作为RAM Filesys
+
+XIPFILES
+	kernel.exe =: $(BUILDRELEASE)\bootloader.exe    SH
+ROMFILES

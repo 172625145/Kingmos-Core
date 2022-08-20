@@ -1,0 +1,6 @@
+LISTS =  \
+	core \
+	device \
+	gwme_drv \
+	gwme_gui \
+	filesys

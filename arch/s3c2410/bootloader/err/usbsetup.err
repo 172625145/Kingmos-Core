@@ -1,0 +1,3 @@
+"usbsetup.c", line 126: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+"usbsetup.c", line 607: Warning: C2870W: variable 'i' declared but not used
+usbsetup.c: 2 warnings, 0 errors, 0 serious errors

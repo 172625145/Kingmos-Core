@@ -1,0 +1,6 @@
+LISTS =  \
+	1bpp \
+	16bpp \
+	32bpp \
+	sysfont \
+	gdidrvlib

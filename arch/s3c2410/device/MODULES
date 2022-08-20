@@ -1,0 +1,32 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+
+MODULENAME = device
+
+ifeq ($(INLINE_PROGRAM),1)
+
+MODULETYPE = LIBRARY
+
+else
+
+MODULETYPE = PROGRAM
+
+DYNAMICLIBS = \
+	$(__PUBLIC_TARGETS)/libbase.so
+
+
+endif
+
+LOCAL_STATICLIBS = \
+		$(__SDK_LIBS)/libarchlib.a \
+		$(__SDK_LIBS)/libdrvlib.a
+
+
+STATICLIBS = $(__PUBLIC_LIBS)/libfilelib.a \
+             $(__PUBLIC_LIBS)/libdevmain.a \
+     		$(__PUBLIC_LIBS)/libgcc.a		
+
+LOCAL_FILES = devlib.c

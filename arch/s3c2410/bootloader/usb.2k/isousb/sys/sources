@@ -1,0 +1,20 @@
+TARGETNAME=IsoUsb
+TARGETTYPE=DRIVER
+DRIVERTYPE=WDM
+
+TARGETPATH=obj
+
+TARGETLIBS=$(DDK_LIB_PATH)\usbd.lib
+
+USE_MAPSYM=1
+
+SOURCES=  \
+    IsoUsb.rc \
+    IusbDbg.c \
+    IsoUsb.c  \
+    IsoPnP.c \
+    IsoPwr.c \
+    IoctlIso.c   \
+    IsoStrm.c \
+    OcrwIso.c
+

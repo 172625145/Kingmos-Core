@@ -1,0 +1,4 @@
+LISTS =  \
+    arm_gcc \
+	common \
+	stdlib

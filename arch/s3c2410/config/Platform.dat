@@ -1,0 +1,31 @@
+!;文件说明：
+!;		该文件用于把ROM里的文件在RAM里建立一个备份，并可以指定RAM里的目录结构。
+!;
+!;具体用法：
+!;	1.建立文件：
+!;	:File["目标文件全路径", "源文件全路径"] ,:Attribute["目标文件新属性"]	
+!
+!	文件属性								  标志	
+!
+!	FILE_ATTRIBUTE_ARCHIVE					[A]
+!	FILE_ATTRIBUTE_HIDDEN					[H]
+!	FILE_ATTRIBUTE_NORMAL					[N]
+!	FILE_ATTRIBUTE_NOT_CONTENT_INDEXED		[C]
+!	FILE_ATTRIBUTE_OFFLINE					[O]
+!	FILE_ATTRIBUTE_READONLY					[R]
+!	FILE_ATTRIBUTE_SYSTEM						[S]
+!	FILE_ATTRIBUTE_TEMPORARY					[T]	
+!
+!;	
+!;	如果没有指定 'Attribute["目标文件新属性"]', 就把目标文件的属性设置为源文件的相同的属性。	
+!;
+!;
+!;	2.建立目录：
+!;	:SUB["新目录路径"]
+!;
+!;	注意：目标文件或新目录都只能在RAM中新建，也就是只能设置为"\kingmos\....".
+
+!; example
+!;:File["\system\ap\kvm\appdb\manager_storage_settings.db", "\kingmos\manager_storage_settings.db"],:Attribute["N"]
+!;
+

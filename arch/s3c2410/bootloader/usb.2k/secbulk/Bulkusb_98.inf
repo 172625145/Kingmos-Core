@@ -1,0 +1,65 @@
+[Version]
+Signature="$CHICAGO$"
+Class=USB
+provider=%ProviderName%
+LayoutFile=layout.inf
+
+[SourceDisksNames]
+1="SMDK41000 USB Test Driver Disk","",1
+
+[SourceDisksFiles]
+bulkusb.sys=1
+
+[Manufacturer]
+%MfgName%=SystemMcu
+
+[SystemMcu]
+%USB\VID_8086&PID_0005.DeviceDesc%=BULKUSB.Dev, USB\VID_8086&PID_0005
+
+[PreCopySection]
+HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+BULKUSB.Files.Ext = 10,System32\Drivers
+BULKUSB.Files.Inf = 10,INF
+
+[BULKUSB.Dev]
+CopyFiles=BULKUSB.Files.Ext, BULKUSB.Files.Inf
+AddReg=BULKUSB.AddReg
+
+[BULKUSB.Dev.NT]
+CopyFiles=BULKUSB.Files.Ext, BULKUSB.Files.Inf
+AddReg=BULKUSB.AddReg
+
+[BULKUSB.Dev.NT.Services]
+Addservice = BULKUSB, 0x00000002, BULKUSB.AddService
+
+[BULKUSB.AddService]
+DisplayName    = %BULKUSB.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 2                  ; SERVICE_AUTO_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\BULKUSB.sys
+LoadOrderGroup = Base
+
+[BULKUSB.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,BULKUSB.sys
+HKLM,"System\Currentcontrolset\Services\BulkUsb\Parameters","MaximumTransferSize",0x10001,4096
+HKLM,"System\Currentcontrolset\Services\BulkUsb\Parameters","DebugLevel",0x10001,2
+
+
+[BULKUSB.Files.Ext]
+BULKUSB.sys
+
+[BULKUSB.Files.Inf]
+BulkUsb.Inf
+
+
+;---------------------------------------------------------------;
+
+[Strings]
+ProviderName="purnnamu"
+MfgName="SYSTEM MCU"
+USB\VID_8086&PID_0005.DeviceDesc="SMDK41000 USB Test Board"
+BULKUSB.SvcDesc="SMDK41000 USB Test Driver"

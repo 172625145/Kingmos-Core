@@ -1,0 +1,4 @@
+"usblib.c", line 188: Warning: C2892E: signed constant overflow: '<<'
+"usblib.c", line 213: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+"usblib.c", line 230: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+usblib.c: 3 warnings, 0 errors, 0 serious errors

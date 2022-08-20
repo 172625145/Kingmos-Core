@@ -1,0 +1,5 @@
+LISTS =  \
+	common \
+	gcc \
+	arm7lib
+

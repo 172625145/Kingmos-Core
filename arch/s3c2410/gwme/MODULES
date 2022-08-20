@@ -1,0 +1,42 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+MODULENAME = gwme
+
+ifeq ($(INLINE_PROGRAM),1)
+
+MODULETYPE = LIBRARY
+
+LOCAL_FILES = \
+            gwmelib.c
+
+else
+	
+MODULETYPE = PROGRAM
+
+DYNAMICLIBS = \
+		$(__PUBLIC_TARGETS)/libbase.so
+
+
+LOCAL_FILES = \
+		gwme.res \
+		gwmelib.c
+		
+endif
+
+#		$(__PUBLIC_LIBS)/libclasslib.a \
+#		$(__PUBLIC_LIBS)/libclassdef.a
+
+STATICLIBS = \
+		$(__PUBLIC_LIBS)/libgcc.a \
+		$(__PUBLIC_LIBS)/libgwmelib.a
+		
+LOCAL_STATICLIBS = \
+		$(__SDK_LIBS)/libdisplayer.a \
+		$(__SDK_LIBS)/libfontcfg.a \
+		$(__SDK_LIBS)/libtoucher.a \
+        $(__SDK_LIBS)/libtouch.a \
+		$(__SDK_LIBS)/libsysgwdi.a \
+		$(__SDK_LIBS)/libdrvshare.a

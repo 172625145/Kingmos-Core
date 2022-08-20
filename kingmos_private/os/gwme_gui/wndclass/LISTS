@@ -1,0 +1,11 @@
+LISTS =  \
+	list \
+	scrollbar \
+	menu \
+	static \
+	sysclass \
+	button \
+	combobox \
+	edit \
+	classlib
+

@@ -1,0 +1,377 @@
+/************************************************
+ * NAME	    : u24xmon.c				*
+ * Version  : 28.FEBRUARY.2001			*
+ ************************************************/
+
+#include <stdlib.h>
+#include <string.h>
+#include "def.h"
+#include "option.h"
+#include "24x.h"
+#include "24xlib.h"
+#include "24xslib.h"
+#include "mmu.h"
+#include "profile.h"
+
+#include "usbmain.h"
+#include "usbout.h"
+#include "usblib.h"
+
+void Isr_Init(void);
+void HaltUndef(void);
+void HaltSwi(void);
+void HaltPabort(void);
+void HaltDabort(void);
+void Lcd_Off(void);
+void WaitDownload(void);
+
+//#define DOWNLOAD_ADDRESS _RAM_STARTADDRESS
+volatile U32 downloadAddress;
+
+void (*restart)(void)=(void (*)(void))0x0;
+void (*run)(void);
+
+
+volatile unsigned char *downPt;
+volatile U32 downloadFileSize;
+volatile U16 checkSum;
+volatile unsigned int err=0;
+volatile U32 totalDmaCount;
+
+volatile int isUsbdSetConfiguration;
+
+
+
+void Main(void)
+{
+    char *mode;
+    int i;
+    U32 data;
+    int memError=0;
+    U32 *pt;
+    
+    #if ADS10   
+    __rt_lib_init(); //for ADS 1.0
+    #endif
+
+    ChangeClockDivider(1,1);        // 1:2:4    
+    //ChangeMPllValue(0x5c,0x4,0x1);  //FCLK=100Mhz     
+    ChangeMPllValue(81,2,1);  //FCLK=133.5Mhz     
+    
+    Port_Init();
+    rPFCON=rPFCON&~(3<<12)|(2<<12); //PF6=CLKOUT
+    rMISCCR=rMISCCR&~(7<<4)|(2<<4); //CLKOUT=FCLK
+        
+    Isr_Init();
+    Uart_Init(0,115200);
+    Uart_Select(0);
+
+    rMISCCR=rMISCCR&(~0x8); // USBD is selected instead of USBH1 
+
+//
+//  USBD should be initialized first of all.
+//
+    isUsbdSetConfiguration=0;
+    UsbdMain(); 
+
+#if 0
+    MMU_Init(); //MMU should be reconfigured or turned off for the debugger, 
+    		//0xc000000~0xdefffff:NCNB
+    		//0xdf00000~0xdffffff:CB
+    //After downloading, MMU should be turned off for the MMU based program,such as WinCE.	
+#else
+    MMU_EnableICache();  
+#endif
+    
+    Delay(0);  //calibrate Delay()
+
+    pISR_SWI=(_ISR_STARTADDRESS+0xf0);    //for pSOS
+
+    Led_Display(0x0);
+    Lcd_Off();     //to avoid LCD damage.
+
+#if USBDMA
+    mode="DMA";
+#else
+    mode="Int";
+#endif
+
+    Uart_Printf("\n\n");
+    Uart_Printf("+-------------------------------------------+\n");
+    Uart_Printf("|S3C2400X USB Downloader ver 0.05 12/07/2001|\n");
+    Uart_Printf("+-------------------------------------------+\n");
+    Uart_Printf("FCLK=%dMHz,ISR_ADDR:%x,%s mode\n",FCLK/1000000,_ISR_STARTADDRESS,mode); 
+    Uart_Printf("USB: IN_ENDPOINT:1 OUT_ENDPOINT:3\n"); 
+    Uart_Printf("FORMAT: <ADDR(DATA):4>+<SIZE(n+10):4>+<DATA:n>+<CS:2>\n");
+    Uart_Printf("NOTE: power off/on to get the valid USBD address.\n");
+    Uart_Printf("\n");
+
+
+    //
+    // memory test
+    //
+    Uart_Printf("Memory Test(%xh-%xh):WR",_RAM_STARTADDRESS,(_ISR_STARTADDRESS&0xfff0000));
+
+    pt=(U32 *)_RAM_STARTADDRESS;
+    while((U32)pt<(_ISR_STARTADDRESS&0xfff0000))
+    {
+	*pt=(U32)pt;
+	pt++;
+    }
+
+    Uart_Printf("\b\bRD");
+    pt=(U32 *)_RAM_STARTADDRESS;
+	
+    while((U32)pt<(_ISR_STARTADDRESS&0xfff0000))
+    {
+	data=*pt;
+	if(data!=(U32)pt)
+	{
+	    memError=1;
+	    Uart_Printf("\b\bFAIL:0x%x=0x%x\n",i,data);
+	    break;
+	}
+	pt++;
+    }
+
+    if(memError==0)Uart_Printf("\b\bO.K.\n");
+
+    WaitDownload();    
+}
+
+
+
+void WaitDownload(void)
+{
+    U32 i;
+    U32 j;
+    U16 cs;
+    U32 temp;
+    U16 dnCS;
+    int first=1;
+    float time;
+
+
+    checkSum=0;
+    downloadAddress=_RAM_STARTADDRESS;
+    downPt=(unsigned char *)downloadAddress;
+    downloadFileSize=0;
+
+#if 0
+    MMU_DisableICache(); 
+        //For multi-ICE. 
+        //If ICache is not turned-off, debugging is started with ICache-on.
+#endif
+
+    /*******************************/
+    /*    Test program download    */
+    /*******************************/
+    j=0;
+    while(downloadFileSize==0)
+    {
+        if(first==1 && isUsbdSetConfiguration!=0)
+        {
+            Uart_Printf("USBD Ready for Download.\n");
+            first=0;
+        }
+	if(j%0x200000==0)Led_Display(0x6);
+	if(j%0x200000==0x100000)Led_Display(0x9);
+	j++;
+    }
+
+    Timer_InitEx();      
+    Timer_StartEx();  
+
+#if USBDMA    
+    rINTMSK&=~(BIT_DMA3);  
+
+    ClearEp3OutPktReady(); 
+    	// indicate the first 64byte packit is processed.
+    	// has been delayed for DMA3 cofiguration.
+
+    if(downloadFileSize>64)
+    {
+        if(downloadFileSize<=(0x80000))
+        {
+      	    ConfigEp3DmaMode(downloadAddress+64-8,downloadFileSize-64);	
+  	    //wait until DMA reload occurs.
+	    while((rDSTAT3&0xfffff)==0);
+
+      	    //will not be used.
+       	    rDIDST3=(0<<30)|(0<<29)|(downloadAddress+downloadFileSize-64);  
+	    rDCON3=rDCON3&~(0xfffff)|(0);        	    
+	    //rDMA_TX+=0;
+	}
+      	else
+      	{
+      	    ConfigEp3DmaMode(downloadAddress+64-8,0x80000-64);
+  	    //wait until DMA reload occurs.
+	    while((rDSTAT3&0xfffff)==0);
+      	    
+    	    if(downloadFileSize>(0x80000*2))//for 1st autoreload
+    	    {
+        	rDIDST3=(0<<30)|(0<<29)|(downloadAddress+0x80000-8);  //for 1st autoreload.
+    	        rDCON3=rDCON3&~(0xfffff)|(0x80000);        	  
+  		while(rDMA_TX<0xfffff)rDMA_TX=0xfffff;
+    	    }	
+ 	    else
+ 	    {
+ 	        rDIDST3=(0<<30)|(0<<29)|(downloadAddress+0x80000-8);  //for 1st autoreload.
+ 	        rDCON3=rDCON3&~(0xfffff)|(downloadFileSize-0x80000); 		
+	    	while(rDMA_TX<0xfffff)rDMA_TX=0xfffff;
+	    }
+	}
+ 	totalDmaCount=0;
+    }
+    else
+    {
+	totalDmaCount=downloadFileSize;
+    }
+#endif
+
+    Uart_Printf("\nNow, Downloading [ADDRESS:%xh,TOTAL:%d]\n",
+    		downloadAddress,downloadFileSize);
+    Uart_Printf("RECEIVED FILE SIZE:%8d",0);
+
+#if USBDMA    
+    j=0x10000;
+
+    while(1)
+    {
+    	if( (rDCDST3-(U32)downloadAddress+8)>=j)
+	{
+	    Uart_Printf("\b\b\b\b\b\b\b\b%8d",j);
+   	    j+=0x10000;
+	}
+	if(totalDmaCount>=downloadFileSize)break;
+    }
+
+#else
+    j=0x10000;
+
+    while(((int)downPt-downloadAddress)<(downloadFileSize-8))
+    {
+	if( ((int)downPt-downloadAddress)>=j)
+	{
+	    Uart_Printf("\b\b\b\b\b\b\b\b%8d",j);
+   	    j+=0x10000;
+	}
+    }
+#endif
+    time=Timer_StopEx();
+    Uart_Printf("\b\b\b\b\b\b\b\b%8d",downloadFileSize);	
+    Uart_Printf("(%5.1fKB/S,%3.1fS)\n",(float)(downloadFileSize/time/1000.),time);
+    
+#if USBDMA    
+    /*******************************/
+    /*     Verify check sum        */
+    /*******************************/
+
+    Uart_Printf("Now, Checksum calculation\n");
+
+    cs=0;    
+    i=(downloadAddress);
+    j=(downloadAddress+downloadFileSize-10)&0xfffffffc;
+    while(i<j)
+    {
+    	temp=*((U32 *)i);
+    	i+=4;
+    	cs+=(U16)(temp&0xff);
+    	cs+=(U16)((temp&0xff00)>>8);
+    	cs+=(U16)((temp&0xff0000)>>16);
+    	cs+=(U16)((temp&0xff000000)>>24);
+    }
+
+    i=(downloadAddress+downloadFileSize-10)&0xfffffffc;
+    j=(downloadAddress+downloadFileSize-10);
+    while(i<j)
+    {
+  	cs+=*((U8 *)i++);
+    }
+    
+    checkSum=cs;
+#else
+    //checkSum was calculated including dnCS. So, dnCS should be subtracted.
+    checkSum=checkSum - *((unsigned char *)(downloadAddress+downloadFileSize-8-2))
+	     - *( (unsigned char *)(downloadAddress+downloadFileSize-8-1) );	
+#endif	  
+
+    dnCS=*((unsigned char *)(downloadAddress+downloadFileSize-8-2))+
+	(*( (unsigned char *)(downloadAddress+downloadFileSize-8-1) )<<8);
+
+    if(checkSum!=dnCS)
+    {
+	Uart_Printf("Checksum Error!!! MEM:%x DN:%x\n",checkSum,dnCS);
+	Main();
+    }
+
+    Uart_Printf("Download O.K.\n");
+    Uart_TxEmpty(0);
+
+    rINTMSK=BIT_ALLMSK;
+    run=(void (*)(void))downloadAddress;
+
+    run();
+}
+
+
+
+
+void Isr_Init(void)
+{
+    pISR_UNDEF=(unsigned)HaltUndef;
+    pISR_SWI  =(unsigned)HaltSwi;
+    pISR_PABORT=(unsigned)HaltPabort;
+    pISR_DABORT=(unsigned)HaltDabort;
+    rINTMOD=0x0;	  // All=IRQ mode
+    rINTMSK=BIT_ALLMSK;	  // All interrupt is masked.
+
+    //pISR_URXD0=(unsigned)Uart0_RxInt;	
+    //rINTMSK=~(BIT_URXD0);   //enable UART0 RX Default value=0xffffffff
+
+    pISR_USBD =(unsigned)IsrUsbd;
+    pISR_DMA3 =(unsigned)IsrDma3;
+    ClearPending(BIT_DMA3);
+    ClearPending(BIT_USBD);
+    rINTMSK&=~(BIT_USBD);  
+
+   
+    //pISR_FIQ,pISR_IRQ must be initialized
+}
+
+
+void Lcd_Off(void)
+{
+	//Disable LCD panel
+	rPDDAT=(rPDDAT & 0x5ff);
+	rPDCON=(rPDCON & 0x33ffff)|(1<<18); 
+	rPDUP =(rPDDAT & 0x5ff);
+}
+
+
+void HaltUndef(void)
+{
+    Uart_Printf("Undefined instruction exception!!!\n");
+    while(1);
+}
+
+void HaltSwi(void)
+{
+    Uart_Printf("SWI exception!!!\n");
+    while(1);
+}
+
+void HaltPabort(void)
+{
+    Uart_Printf("Pabort exception!!!\n");
+    while(1);
+}
+
+void HaltDabort(void)
+{
+    Uart_Printf("Dabort exception!!!\n");
+    while(1);
+}
+
+
+

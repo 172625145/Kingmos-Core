@@ -1,0 +1,8 @@
+LISTS =  \
+	displayer \
+	toucher \
+	drvshare \
+	serial \
+	sysdev \
+	archlib \
+	sysgwdi

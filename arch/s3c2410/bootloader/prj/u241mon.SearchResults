@@ -1,0 +1,4 @@
+---- Uart_TxEmpty Matches (3 in 3 files) ----
+2410lib.c:182:void Uart_TxEmpty(int ch)
+2410lib.h:44:void Uart_TxEmpty(int ch);
+U241mon.c:384:    Uart_TxEmpty(0);

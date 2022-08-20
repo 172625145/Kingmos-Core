@@ -1,0 +1,639 @@
+entity S3C2410 is
+    generic (PHYSICAL_PIN_MAP : string := "Unknown");
+
+    port (
+        PnRESET              :in         bit;
+        PXTipll              :in         bit;
+        PEXTCLK              :in         bit;
+        PnWAIT               :in         bit;
+        PAVref               :in         bit;
+        PnTRST               :in         bit;
+        PTDI                 :in         bit;
+        PTMS                 :in         bit;
+        PTCK                 :in         bit;
+        PBATT_FLT            :in         bit;
+        PUPLLCAP             :in         bit;
+        PMPLLCAP             :in         bit;
+        PXTirtc              :in         bit;
+        PXTortc              :in         bit;
+        PNCON                :in         bit_vector(0     to     1);
+        PAIN                 :in         bit_vector(0     to     7);
+        POM                  :in         bit_vector(0     to     3);
+        PDATA                :inout      bit_vector(0     to    31);
+        PTOUT                :inout      bit_vector(0     to     3);
+        PTCLK0               :inout      bit;
+        PnXBACK              :inout      bit;
+        PnXBREQ              :inout      bit;
+        PnXDACK              :inout      bit_vector(0     to     1);
+        PnXDREQ              :inout      bit_vector(0     to     1);
+        PLEND                :inout      bit;
+        PVCLK                :inout      bit;
+        PVLINE               :inout      bit;
+        PVFRAME              :inout      bit;
+        PVM                  :inout      bit;
+        PLCDVF               :inout      bit_vector(0     to     2);
+        PVD                  :inout      bit_vector(0     to    23);
+        PI2SLRCK             :inout      bit;
+        PI2SSCLK             :inout      bit;
+        PCDCLK               :inout      bit;
+        PI2SDI               :inout      bit;
+        PI2SDO               :inout      bit;
+        PSDCLK               :inout      bit;
+        PSDCMD               :inout      bit;
+        PSDDAT               :inout      bit_vector(0     to     3);
+        PSPIMISO             :inout      bit;
+        PSPIMOSI             :inout      bit;
+        PSPICLK              :inout      bit;
+        PIICSCL              :inout      bit;
+        PIICSDA              :inout      bit;
+        PEINT                :inout      bit_vector(0     to    23);
+        PDP                  :inout      bit_vector(0     to     1);
+        PDN                  :inout      bit_vector(0     to     1);
+        PnCTS0               :inout      bit;
+        PnRTS0               :inout      bit;
+        PTXD                 :inout      bit_vector(0     to     2);
+        PRXD                 :inout      bit_vector(0     to     2);
+        PUARTCLK             :inout      bit;
+        PCLKOUT              :inout      bit_vector(0     to     1);
+        PXTopll              :out        bit;
+        PnRSTOUT             :out        bit;
+        PPWREN               :out        bit;
+        PnFCE                :out        bit;
+        PnFRE                :out        bit;
+        PnFWE                :out        bit;
+        PALE                 :out        bit;
+        PCLE                 :out        bit;
+        PnGCS                :out        bit_vector(0     to     7);
+        PSCLK                :out        bit_vector(0     to     1);
+        PnSRAS               :out        bit;
+        PnSCAS               :out        bit;
+        PSCKE                :out        bit;
+        PnWE                 :out        bit;
+        PnOE                 :out        bit;
+        PnBE                 :out        bit_vector(0     to     3);
+        PADDR                :out        bit_vector(0     to    26);
+        PTDO                 :out        bit
+    );
+
+    use STD_1149_1_1994.all;
+
+    attribute COMPONENT_CONFORMANCE of S3C2410 : entity is "STD_1149_1_1993";
+
+    attribute PIN_MAP of S3C2410 : entity is PHYSICAL_PIN_MAP;
+
+-- Note 1:
+-- Insert pin-map strings for different packages here.
+-- An example pin-map string for this design is shown below:
+
+--    constant Unknown : PIN_MAP_STRING :=
+--        "PTOUT:(16, 17, 18, 19)," &
+--        "PTCLK0:20," &
+--        "PnXBACK:21," &
+--        "PnXBREQ:22," &
+--        "PnXDACK:(28, 23)," &
+--        "PnXDREQ:(29, 27)," &
+--        "PnTRST:30," &
+--        "PTCK:31," &
+--        "PTDI:32," &
+--        "PTMS:33," &
+--        "PTDO:34," &
+--        "PLEND:35," &
+--        "PVCLK:36," &
+--        "PVLINE:37," &
+--        "PVM:40," &
+--        "PVFRAME:41," &
+--        "PVDDOP42:42," &
+--        "PVSSOP43:43," &
+--        "PLCDVF:(44, 45, 46)," &
+--        "PVD(47, 48, 49, 50, 53, 54, 55, 56, 57, 58, 59, 60, 61, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74)," &
+--        "PDATA:(246, 247, 248, 249, 250, 251, 252, 253, 256, 257, 258, 259, 260, 261, 262, 263, 268, 269, 270, 271, 272, 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13)," &
+--        "PI2SLRCK:79," &
+--        "PI2SSCLK:80," &
+--        "PCDCLK:81," &
+--        "PI2SDI:82," &
+--        "PI2SDO:83," &
+--        "PSDCLK:84," &
+--        "PSDCMD:85," &
+--        "PSDDAT:(86, 87, 88, 89)," &
+--        "PSPIMISO:90," &
+--        "PSPIMOSI:91," &
+--        "PSPICLK:92," &
+--        "PIICSCL:95," &
+--        "PIICSDA:96," &
+--        "PEINT:(151, 152, 153, 154, 155, 156, 157, 158, 97, 98, 99, 100, 101, 102, 103, 108, 109, 110, 111, 112, 113, 114, 115, 116)," &
+--        "PCLKOUT:(117, 118)," &
+--        "PDP:(121, 119)," &
+--        "PDN:(120, 122)," &
+--        "PNCON:(124, 123)," &
+--        "POM:(128, 127, 126, 125)," &
+--        "PAVref:131," &
+--        "PAIN:(132, 133, 134, 135, 136, 137, 138, 139)," &
+--        "VSSAADC130:130," &
+--        "VDDAADC140:140," &
+--        "PXTortc:141," &
+--        "PXTirtc:142," &
+--        "VDDRTC143:143," &
+--        "PMPLLCAP:146," &
+--        "PUPLLCAP:149," &
+--        "PUARTCLK:159," &
+--        "PnCTS0:160," &
+--        "PnRTS0:161," &
+--        "PTXD:(162, 164, 166)," &
+--        "PRXD:(163, 165, 167)," &
+--        "PBATT_FLT:168," &
+--        "PnRSTOUT:169," &
+--        "PPWREN:170," &
+--        "PnRESET:171," &
+--        "PEXTCLK:173," &
+--        "PXTipll:175," &
+--        "PXTopll:176," &
+--        "PnFCE:180," &
+--        "PnFRE:181," &
+--        "PnFWE:182," &
+--        "PALE:183," &
+--        "PCLE:184," &
+--        "PnWAIT:185," &
+--        "PnGCS:(193, 192, 191, 190, 189, 188, 187, 186)," &
+--        "PSCKE:194," &
+--        "PSCLK:(198, 196)," &
+--        "PnWE:200," &
+--        "PnOE:201," &
+--        "PnBE:(202, 203, 204, 205)," &
+--        "PnSRAS:206," &
+--        "PnSCAS:207," &
+--        "PADDR:(210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 222, 223, 226, 227, 228, 229, 230, 231, 233, 234, 235, 236, 237, 238, 239, 240, 241)," &
+--        "VDD:(5, 24, 25, 38, 51, 62, 75, 77, 93, 105, 106, 144, 147, 150, 172, 174, 179, 197, 208, 221, 224, 242, 244, 254, 264, 266)," &
+--        "VSS:(4, 14, 15, 26, 39, 52, 63, 76, 78, 94, 104, 107, 129, 145, 148, 177, 178, 195, 199, 209, 220, 225, 232, 243, 245, 255, 265, 267)";
+
+    attribute TAP_SCAN_IN of PTDI : signal is true;
+    attribute TAP_SCAN_MODE of PTMS : signal is true;
+    attribute TAP_SCAN_OUT of PTDO : signal is true;
+
+
+-- Note 2:
+-- Uncomment TAP_SCAN_CLOCK attribute below, and insert
+-- maximum operating frequency of PTCK in Hertz.
+
+--    attribute TAP_SCAN_CLOCK of PTCK : signal is (1.0e6, BOTH);
+    attribute TAP_SCAN_RESET of PnTRST : signal is true;
+
+
+    attribute COMPLIANCE_PATTERNS of S3C2410 : entity is
+        "(POM[0], POM[1], POM[2], POM[3]) (0100)";
+
+    attribute INSTRUCTION_LENGTH of S3C2410 : entity is 4;
+
+    attribute INSTRUCTION_OPCODE of S3C2410 : entity is
+        "BYPASS          (1111)," &
+        "SAMPLE          (0011)," &
+        "EXTEST          (0000)," &
+        "IDCODE          (1110)";
+
+    attribute INSTRUCTION_CAPTURE of S3C2410 : entity is "0001";
+
+    attribute IDCODE_REGISTER of S3C2410 : entity is
+        "0000" &                -- version
+        "0000001100100100" &    -- part number
+        "00001001110" &         -- manufacturer's identity
+        "1";                    -- required by 1149.1
+
+    attribute REGISTER_ACCESS of S3C2410 : entity is
+        "Bypass          (BYPASS)," &
+        "Boundary        (SAMPLE, EXTEST)," &
+        "Device_ID       (IDCODE)";
+
+    attribute BOUNDARY_LENGTH of S3C2410 : entity is 427;
+
+    attribute BOUNDARY_REGISTER  of S3C2410 : entity is
+     --
+     -- num   cell   port                  function   safe [ccell disval rslt]
+     --
+        "426 (BC_4,  PLEND,                input,      X)," &
+        "425 (BC_1,  *,                    control,    1)," &
+        "424 (BC_1,  PLEND,                output3,    X, 425, 1, Z)," &
+        "423 (BC_4,  PVCLK,                observe_only, X)," &
+        "422 (BC_1,  *,                    control,    1)," &
+        "421 (BC_1,  PVCLK,                output3,    X, 422, 1, Z)," &
+        "420 (BC_4,  PVLINE,               observe_only, X)," &
+        "419 (BC_1,  *,                    control,    1)," &
+        "418 (BC_1,  PVLINE,               output3,    X, 419, 1, Z)," &
+        "417 (BC_4,  PVM,                  observe_only, X)," &
+        "416 (BC_1,  *,                    control,    1)," &
+        "415 (BC_1,  PVM,                  output3,    X, 416, 1, Z)," &
+        "414 (BC_4,  PVFRAME,              observe_only, X)," &
+        "413 (BC_1,  *,                    control,    1)," &
+        "412 (BC_1,  PVFRAME,              output3,    X, 413, 1, Z)," &
+        "411 (BC_4,  PLCDVF(0),            observe_only, X)," &
+        "410 (BC_1,  *,                    control,    1)," &
+        "409 (BC_1,  PLCDVF(0),            output3,    X, 410, 1, Z)," &
+        "408 (BC_4,  PLCDVF(1),            observe_only, X)," &
+        "407 (BC_1,  *,                    control,    1)," &
+        "406 (BC_1,  PLCDVF(1),            output3,    X, 407, 1, Z)," &
+        "405 (BC_4,  PLCDVF(2),            observe_only, X)," &
+        "404 (BC_1,  *,                    control,    1)," &
+        "403 (BC_1,  PLCDVF(2),            output3,    X, 404, 1, Z)," &
+        "402 (BC_4,  PVD(0),               observe_only, X)," &
+        "401 (BC_1,  *,                    control,    1)," &
+        "400 (BC_1,  PVD(0),               output3,    X, 401, 1, Z)," &
+        "399 (BC_4,  PVD(1),               observe_only, X)," &
+        "398 (BC_1,  *,                    control,    1)," &
+        "397 (BC_1,  PVD(1),               output3,    X, 398, 1, Z)," &
+        "396 (BC_4,  PVD(2),               observe_only, X)," &
+        "395 (BC_1,  *,                    control,    1)," &
+        "394 (BC_1,  PVD(2),               output3,    X, 395, 1, Z)," &
+        "393 (BC_4,  PVD(3),               observe_only, X)," &
+        "392 (BC_1,  *,                    control,    1)," &
+        "391 (BC_1,  PVD(3),               output3,    X, 392, 1, Z)," &
+        "390 (BC_4,  PVD(4),               observe_only, X)," &
+        "389 (BC_1,  *,                    control,    1)," &
+        "388 (BC_1,  PVD(4),               output3,    X, 389, 1, Z)," &
+        "387 (BC_4,  PVD(5),               observe_only, X)," &
+        "386 (BC_1,  *,                    control,    1)," &
+        "385 (BC_1,  PVD(5),               output3,    X, 386, 1, Z)," &
+        "384 (BC_4,  PVD(6),               observe_only, X)," &
+        "383 (BC_1,  *,                    control,    1)," &
+        "382 (BC_1,  PVD(6),               output3,    X, 383, 1, Z)," &
+        "381 (BC_4,  PVD(7),               observe_only, X)," &
+        "380 (BC_1,  *,                    control,    1)," &
+        "379 (BC_1,  PVD(7),               output3,    X, 380, 1, Z)," &
+        "378 (BC_4,  PVD(8),               observe_only, X)," &
+        "377 (BC_1,  *,                    control,    1)," &
+        "376 (BC_1,  PVD(8),               output3,    X, 377, 1, Z)," &
+        "375 (BC_4,  PVD(9),               observe_only, X)," &
+        "374 (BC_1,  *,                    control,    1)," &
+        "373 (BC_1,  PVD(9),               output3,    X, 374, 1, Z)," &
+        "372 (BC_4,  PVD(10),              observe_only, X)," &
+        "371 (BC_1,  *,                    control,    1)," &
+        "370 (BC_1,  PVD(10),              output3,    X, 371, 1, Z)," &
+        "369 (BC_4,  PVD(11),              observe_only, X)," &
+        "368 (BC_1,  *,                    control,    1)," &
+        "367 (BC_1,  PVD(11),              output3,    X, 368, 1, Z)," &
+        "366 (BC_4,  PVD(12),              observe_only, X)," &
+        "365 (BC_1,  *,                    control,    1)," &
+        "364 (BC_1,  PVD(12),              output3,    X, 365, 1, Z)," &
+        "363 (BC_4,  PVD(13),              observe_only, X)," &
+        "362 (BC_1,  *,                    control,    1)," &
+        "361 (BC_1,  PVD(13),              output3,    X, 362, 1, Z)," &
+        "360 (BC_4,  PVD(14),              observe_only, X)," &
+        "359 (BC_1,  *,                    control,    1)," &
+        "358 (BC_1,  PVD(14),              output3,    X, 359, 1, Z)," &
+        "357 (BC_4,  PVD(15),              observe_only, X)," &
+        "356 (BC_1,  *,                    control,    1)," &
+        "355 (BC_1,  PVD(15),              output3,    X, 356, 1, Z)," &
+        "354 (BC_4,  PVD(16),              observe_only, X)," &
+        "353 (BC_1,  *,                    control,    1)," &
+        "352 (BC_1,  PVD(16),              output3,    X, 353, 1, Z)," &
+        "351 (BC_4,  PVD(17),              observe_only, X)," &
+        "350 (BC_1,  *,                    control,    1)," &
+        "349 (BC_1,  PVD(17),              output3,    X, 350, 1, Z)," &
+        "348 (BC_4,  PVD(18),              observe_only, X)," &
+        "347 (BC_1,  *,                    control,    1)," &
+        "346 (BC_1,  PVD(18),              output3,    X, 347, 1, Z)," &
+        "345 (BC_4,  PVD(19),              observe_only, X)," &
+        "344 (BC_1,  *,                    control,    1)," &
+        "343 (BC_1,  PVD(19),              output3,    X, 344, 1, Z)," &
+        "342 (BC_4,  PVD(20),              observe_only, X)," &
+        "341 (BC_1,  *,                    control,    1)," &
+        "340 (BC_1,  PVD(20),              output3,    X, 341, 1, Z)," &
+        "339 (BC_4,  PVD(21),              observe_only, X)," &
+        "338 (BC_1,  *,                    control,    1)," &
+        "337 (BC_1,  PVD(21),              output3,    X, 338, 1, Z)," &
+        "336 (BC_4,  PVD(22),              observe_only, X)," &
+        "335 (BC_1,  *,                    control,    1)," &
+        "334 (BC_1,  PVD(22),              output3,    X, 335, 1, Z)," &
+        "333 (BC_4,  PVD(23),              observe_only, X)," &
+        "332 (BC_1,  *,                    control,    1)," &
+        "331 (BC_1,  PVD(23),              output3,    X, 332, 1, Z)," &
+        "330 (BC_4,  PI2SLRCK,             observe_only, X)," &
+        "329 (BC_1,  *,                    control,    1)," &
+        "328 (BC_1,  PI2SLRCK,             output3,    X, 329, 1, Z)," &
+        "327 (BC_4,  PI2SSCLK,             observe_only, X)," &
+        "326 (BC_1,  *,                    control,    1)," &
+        "325 (BC_1,  PI2SSCLK,             output3,    X, 326, 1, Z)," &
+        "324 (BC_4,  PCDCLK,               observe_only, X)," &
+        "323 (BC_1,  *,                    control,    1)," &
+        "322 (BC_1,  PCDCLK,               output3,    X, 323, 1, Z)," &
+        "321 (BC_4,  PI2SDI,               observe_only, X)," &
+        "320 (BC_1,  *,                    control,    1)," &
+        "319 (BC_1,  PI2SDI,               output3,    X, 320, 1, Z)," &
+        "318 (BC_4,  PI2SDO,               observe_only, X)," &
+        "317 (BC_1,  *,                    control,    1)," &
+        "316 (BC_1,  PI2SDO,               output3,    X, 317, 1, Z)," &
+        "315 (BC_4,  PSDCLK,               observe_only, X)," &
+        "314 (BC_1,  *,                    control,    1)," &
+        "313 (BC_1,  PSDCLK,               output3,    X, 314, 1, Z)," &
+        "312 (BC_4,  PSDCMD,               observe_only, X)," &
+        "311 (BC_1,  *,                    control,    1)," &
+        "310 (BC_1,  PSDCMD,               output3,    X, 311, 1, Z)," &
+        "309 (BC_4,  PSDDAT(0),            observe_only, X)," &
+        "308 (BC_1,  *,                    control,    1)," &
+        "307 (BC_1,  PSDDAT(0),            output3,    X, 308, 1, Z)," &
+        "306 (BC_4,  PSDDAT(1),            observe_only, X)," &
+        "305 (BC_1,  *,                    control,    1)," &
+        "304 (BC_1,  PSDDAT(1),            output3,    X, 305, 1, Z)," &
+        "303 (BC_4,  PSDDAT(2),            observe_only, X)," &
+        "302 (BC_1,  *,                    control,    1)," &
+        "301 (BC_1,  PSDDAT(2),            output3,    X, 302, 1, Z)," &
+        "300 (BC_4,  PSDDAT(3),            observe_only, X)," &
+        "299 (BC_1,  *,                    control,    1)," &
+        "298 (BC_1,  PSDDAT(3),            output3,    X, 299, 1, Z)," &
+        "297 (BC_4,  PSPIMISO,             observe_only, X)," &
+        "296 (BC_1,  *,                    control,    1)," &
+        "295 (BC_1,  PSPIMISO,             output3,    X, 296, 1, Z)," &
+        "294 (BC_4,  PSPIMOSI,             observe_only, X)," &
+        "293 (BC_1,  *,                    control,    1)," &
+        "292 (BC_1,  PSPIMOSI,             output3,    X, 293, 1, Z)," &
+        "291 (BC_4,  PSPICLK,              observe_only, X)," &
+        "290 (BC_1,  *,                    control,    1)," &
+        "289 (BC_1,  PSPICLK,              output3,    X, 290, 1, Z)," &
+        "288 (BC_4,  PIICSCL,              observe_only, X)," &
+        "287 (BC_1,  PIICSCL,              output2,    1, 287, 1, Weak1)," &     -- open drain output
+        "286 (BC_4,  PIICSDA,              observe_only, X)," &
+        "285 (BC_1,  PIICSDA,              output2,    1, 285, 1, Weak1)," &     -- open drain output
+        "284 (BC_4,  PEINT(8),             observe_only, X)," &
+        "283 (BC_1,  *,                    control,    1)," &
+        "282 (BC_1,  PEINT(8),             output3,    X, 283, 1, Z)," &
+        "281 (BC_4,  PEINT(9),             observe_only, X)," &
+        "280 (BC_1,  *,                    control,    1)," &
+        "279 (BC_1,  PEINT(9),             output3,    X, 280, 1, Z)," &
+        "278 (BC_4,  PEINT(10),            observe_only, X)," &
+        "277 (BC_1,  *,                    control,    1)," &
+        "276 (BC_1,  PEINT(10),            output3,    X, 277, 1, Z)," &
+        "275 (BC_4,  PEINT(11),            observe_only, X)," &
+        "274 (BC_1,  *,                    control,    1)," &
+        "273 (BC_1,  PEINT(11),            output3,    X, 274, 1, Z)," &
+        "272 (BC_4,  PEINT(12),            observe_only, X)," &
+        "271 (BC_1,  *,                    control,    1)," &
+        "270 (BC_1,  PEINT(12),            output3,    X, 271, 1, Z)," &
+        "269 (BC_4,  PEINT(13),            observe_only, X)," &
+        "268 (BC_1,  *,                    control,    1)," &
+        "267 (BC_1,  PEINT(13),            output3,    X, 268, 1, Z)," &
+        "266 (BC_4,  PEINT(14),            observe_only, X)," &
+        "265 (BC_1,  *,                    control,    1)," &
+        "264 (BC_1,  PEINT(14),            output3,    X, 265, 1, Z)," &
+        "263 (BC_4,  PEINT(15),            observe_only, X)," &
+        "262 (BC_1,  *,                    control,    1)," &
+        "261 (BC_1,  PEINT(15),            output3,    X, 262, 1, Z)," &
+        "260 (BC_4,  PEINT(16),            observe_only, X)," &
+        "259 (BC_1,  *,                    control,    1)," &
+        "258 (BC_1,  PEINT(16),            output3,    X, 259, 1, Z)," &
+        "257 (BC_4,  PEINT(17),            observe_only, X)," &
+        "256 (BC_1,  *,                    control,    1)," &
+        "255 (BC_1,  PEINT(17),            output3,    X, 256, 1, Z)," &
+        "254 (BC_4,  PEINT(18),            observe_only, X)," &
+        "253 (BC_1,  *,                    control,    1)," &
+        "252 (BC_1,  PEINT(18),            output3,    X, 253, 1, Z)," &
+        "251 (BC_4,  PEINT(19),            observe_only, X)," &
+        "250 (BC_1,  *,                    control,    1)," &
+        "249 (BC_1,  PEINT(19),            output3,    X, 250, 1, Z)," &
+        "248 (BC_4,  PEINT(20),            observe_only, X)," &
+        "247 (BC_1,  *,                    control,    1)," &
+        "246 (BC_1,  PEINT(20),            output3,    X, 247, 1, Z)," &
+        "245 (BC_4,  PEINT(21),            observe_only, X)," &
+        "244 (BC_1,  *,                    control,    1)," &
+        "243 (BC_1,  PEINT(21),            output3,    X, 244, 1, Z)," &
+        "242 (BC_4,  PEINT(22),            observe_only, X)," &
+        "241 (BC_1,  *,                    control,    1)," &
+        "240 (BC_1,  PEINT(22),            output3,    X, 241, 1, Z)," &
+        "239 (BC_4,  PEINT(23),            observe_only, X)," &
+        "238 (BC_1,  *,                    control,    1)," &
+        "237 (BC_1,  PEINT(23),            output3,    X, 238, 1, Z)," &
+        "236 (BC_4,  PCLKOUT(0),           observe_only, X)," &
+        "235 (BC_1,  *,                    control,    1)," &
+        "234 (BC_1,  PCLKOUT(0),           output3,    X, 235, 1, Z)," &
+        "233 (BC_4,  PCLKOUT(1),           observe_only, X)," &
+        "232 (BC_1,  *,                    control,    1)," &
+        "231 (BC_1,  PCLKOUT(1),           output3,    X, 232, 1, Z)," &
+        "230 (BC_4,  PNCON(1),             observe_only, X)," &
+        "229 (BC_4,  PNCON(0),             observe_only, X)," &
+        "228 (BC_4,  PEINT(0),             observe_only, X)," &
+        "227 (BC_1,  *,                    control,    1)," &
+        "226 (BC_1,  PEINT(0),             output3,    X, 227, 1, Z)," &
+        "225 (BC_4,  PEINT(1),             observe_only, X)," &
+        "224 (BC_1,  *,                    control,    1)," &
+        "223 (BC_1,  PEINT(1),             output3,    X, 224, 1, Z)," &
+        "222 (BC_4,  PEINT(2),             observe_only, X)," &
+        "221 (BC_1,  *,                    control,    1)," &
+        "220 (BC_1,  PEINT(2),             output3,    X, 221, 1, Z)," &
+        "219 (BC_4,  PEINT(3),             observe_only, X)," &
+        "218 (BC_1,  *,                    control,    1)," &
+        "217 (BC_1,  PEINT(3),             output3,    X, 218, 1, Z)," &
+        "216 (BC_4,  PEINT(4),             observe_only, X)," &
+        "215 (BC_1,  *,                    control,    1)," &
+        "214 (BC_1,  PEINT(4),             output3,    X, 215, 1, Z)," &
+        "213 (BC_4,  PEINT(5),             observe_only, X)," &
+        "212 (BC_1,  *,                    control,    1)," &
+        "211 (BC_1,  PEINT(5),             output3,    X, 212, 1, Z)," &
+        "210 (BC_4,  PEINT(6),             observe_only, X)," &
+        "209 (BC_1,  *,                    control,    1)," &
+        "208 (BC_1,  PEINT(6),             output3,    X, 209, 1, Z)," &
+        "207 (BC_4,  PEINT(7),             observe_only, X)," &
+        "206 (BC_1,  *,                    control,    1)," &
+        "205 (BC_1,  PEINT(7),             output3,    X, 206, 1, Z)," &
+        "204 (BC_4,  PUARTCLK,             observe_only, X)," &
+        "203 (BC_1,  *,                    control,    1)," &
+        "202 (BC_1,  PUARTCLK,             output3,    X, 203, 1, Z)," &
+        "201 (BC_4,  PnCTS0,               observe_only, X)," &
+        "200 (BC_1,  *,                    control,    1)," &
+        "199 (BC_1,  PnCTS0,               output3,    X, 200, 1, Z)," &
+        "198 (BC_4,  PnRTS0,               observe_only, X)," &
+        "197 (BC_1,  *,                    control,    1)," &
+        "196 (BC_1,  PnRTS0,               output3,    X, 197, 1, Z)," &
+        "195 (BC_4,  PTXD(0),              observe_only, X)," &
+        "194 (BC_1,  *,                    control,    1)," &
+        "193 (BC_1,  PTXD(0),              output3,    X, 194, 1, Z)," &
+        "192 (BC_4,  PRXD(0),              observe_only, X)," &
+        "191 (BC_1,  *,                    control,    1)," &
+        "190 (BC_1,  PRXD(0),              output3,    X, 191, 1, Z)," &
+        "189 (BC_4,  PTXD(1),              observe_only, X)," &
+        "188 (BC_1,  *,                    control,    1)," &
+        "187 (BC_1,  PTXD(1),              output3,    X, 188, 1, Z)," &
+        "186 (BC_4,  PRXD(1),              observe_only, X)," &
+        "185 (BC_1,  *,                    control,    1)," &
+        "184 (BC_1,  PRXD(1),              output3,    X, 185, 1, Z)," &
+        "183 (BC_4,  PTXD(2),              observe_only, X)," &
+        "182 (BC_1,  *,                    control,    1)," &
+        "181 (BC_1,  PTXD(2),              output3,    X, 182, 1, Z)," &
+        "180 (BC_4,  PRXD(2),              observe_only, X)," &
+        "179 (BC_1,  *,                    control,    1)," &
+        "178 (BC_1,  PRXD(2),              output3,    X, 179, 1, Z)," &
+        "177 (BC_4,  PBATT_FLT,            observe_only, X)," &
+        "176 (BC_1,  PnRSTOUT,             output2,    X)," &
+        "175 (BC_1,  PPWREN,               output2,    X)," &
+        "174 (BC_4,  PnRESET,              observe_only, X)," &
+        "173 (BC_4,  PEXTCLK,              observe_only, X)," &
+        "172 (BC_1,  PnFCE,                output2,    X)," &
+        "171 (BC_1,  PnFRE,                output2,    X)," &
+        "170 (BC_1,  PnFWE,                output2,    X)," &
+        "169 (BC_1,  PALE,                 output2,    X)," &
+        "168 (BC_1,  PCLE,                 output2,    X)," &
+        "167 (BC_4,  PnWAIT,               observe_only, X)," &
+        "166 (BC_1,  *,                    control,    1)," &
+        "165 (BC_1,  PnGCS(7),             output3,    X, 166, 1, Z)," &
+        "164 (BC_1,  PnGCS(6),             output3,    X, 166, 1, Z)," &
+        "163 (BC_1,  *,                    control,    1)," &
+        "162 (BC_1,  PnGCS(5),             output3,    X, 163, 1, Z)," &
+        "161 (BC_1,  *,                    control,    1)," &
+        "160 (BC_1,  PnGCS(4),             output3,    X, 161, 1, Z)," &
+        "159 (BC_1,  *,                    control,    1)," &
+        "158 (BC_1,  PnGCS(3),             output3,    X, 159, 1, Z)," &
+        "157 (BC_1,  *,                    control,    1)," &
+        "156 (BC_1,  PnGCS(2),             output3,    X, 157, 1, Z)," &
+        "155 (BC_1,  *,                    control,    1)," &
+        "154 (BC_1,  PnGCS(1),             output3,    X, 155, 1, Z)," &
+        "153 (BC_1,  *,                    control,    1)," &
+        "152 (BC_1,  PnGCS(0),             output3,    X, 153, 1, Z)," &
+        "151 (BC_1,  PSCKE,                output3,    X, 153, 1, Z)," &
+        "150 (BC_1,  PSCLK(1),             output3,    X, 166, 1, Z)," &
+        "149 (BC_1,  PSCLK(0),             output3,    X, 166, 1, Z)," &
+        "148 (BC_1,  PnWE,                 output3,    X, 153, 1, Z)," &
+        "147 (BC_1,  PnOE,                 output3,    X, 153, 1, Z)," &
+        "146 (BC_1,  PnBE(0),              output3,    X, 153, 1, Z)," &
+        "145 (BC_1,  PnBE(1),              output3,    X, 153, 1, Z)," &
+        "144 (BC_1,  PnBE(2),              output3,    X, 153, 1, Z)," &
+        "143 (BC_1,  PnBE(3),              output3,    X, 153, 1, Z)," &
+        "142 (BC_1,  PnSRAS,               output3,    X, 166, 1, Z)," &
+        "141 (BC_1,  PnSCAS,               output3,    X, 166, 1, Z)," &
+        "140 (BC_1,  *,                    control,    1)," &
+        "139 (BC_1,  PADDR(0),             output3,    X, 140, 1, Z)," &
+        "138 (BC_1,  *,                    control,    1)," &
+        "137 (BC_1,  PADDR(1),             output3,    X, 138, 1, Z)," &
+        "136 (BC_1,  PADDR(2),             output3,    X, 138, 1, Z)," &
+        "135 (BC_1,  PADDR(3),             output3,    X, 138, 1, Z)," &
+        "134 (BC_1,  PADDR(4),             output3,    X, 138, 1, Z)," &
+        "133 (BC_1,  PADDR(5),             output3,    X, 138, 1, Z)," &
+        "132 (BC_1,  PADDR(6),             output3,    X, 138, 1, Z)," &
+        "131 (BC_1,  PADDR(7),             output3,    X, 138, 1, Z)," &
+        "130 (BC_1,  PADDR(8),             output3,    X, 138, 1, Z)," &
+        "129 (BC_1,  PADDR(9),             output3,    X, 138, 1, Z)," &
+        "128 (BC_1,  PADDR(10),            output3,    X, 138, 1, Z)," &
+        "127 (BC_1,  PADDR(11),            output3,    X, 138, 1, Z)," &
+        "126 (BC_1,  PADDR(12),            output3,    X, 138, 1, Z)," &
+        "125 (BC_1,  PADDR(13),            output3,    X, 138, 1, Z)," &
+        "124 (BC_1,  PADDR(14),            output3,    X, 138, 1, Z)," &
+        "123 (BC_1,  PADDR(15),            output3,    X, 138, 1, Z)," &
+        "122 (BC_1,  *,                    control,    1)," &
+        "121 (BC_1,  PADDR(16),            output3,    X, 122, 1, Z)," &
+        "120 (BC_1,  *,                    control,    1)," &
+        "119 (BC_1,  PADDR(17),            output3,    X, 120, 1, Z)," &
+        "118 (BC_1,  *,                    control,    1)," &
+        "117 (BC_1,  PADDR(18),            output3,    X, 118, 1, Z)," &
+        "116 (BC_1,  *,                    control,    1)," &
+        "115 (BC_1,  PADDR(19),            output3,    X, 116, 1, Z)," &
+        "114 (BC_1,  *,                    control,    1)," &
+        "113 (BC_1,  PADDR(20),            output3,    X, 114, 1, Z)," &
+        "112 (BC_1,  *,                    control,    1)," &
+        "111 (BC_1,  PADDR(21),            output3,    X, 112, 1, Z)," &
+        "110 (BC_1,  *,                    control,    1)," &
+        "109 (BC_1,  PADDR(22),            output3,    X, 110, 1, Z)," &
+        "108 (BC_1,  *,                    control,    1)," &
+        "107 (BC_1,  PADDR(23),            output3,    X, 108, 1, Z)," &
+        "106 (BC_1,  *,                    control,    1)," &
+        "105 (BC_1,  PADDR(24),            output3,    X, 106, 1, Z)," &
+        "104 (BC_1,  *,                    control,    1)," &
+        "103 (BC_1,  PADDR(25),            output3,    X, 104, 1, Z)," &
+        "102 (BC_1,  *,                    control,    1)," &
+        "101 (BC_1,  PADDR(26),            output3,    X, 102, 1, Z)," &
+        "100 (BC_4,  PDATA(0),             observe_only, X)," &
+        "99  (BC_1,  *,                    control,    1)," &
+        "98  (BC_1,  PDATA(0),             output3,    X,  99, 1, Z)," &
+        "97  (BC_4,  PDATA(1),             observe_only, X)," &
+        "96  (BC_1,  PDATA(1),             output3,    X,  99, 1, Z)," &
+        "95  (BC_4,  PDATA(2),             observe_only, X)," &
+        "94  (BC_1,  PDATA(2),             output3,    X,  99, 1, Z)," &
+        "93  (BC_4,  PDATA(3),             observe_only, X)," &
+        "92  (BC_1,  PDATA(3),             output3,    X,  99, 1, Z)," &
+        "91  (BC_4,  PDATA(4),             observe_only, X)," &
+        "90  (BC_1,  PDATA(4),             output3,    X,  99, 1, Z)," &
+        "89  (BC_4,  PDATA(5),             observe_only, X)," &
+        "88  (BC_1,  PDATA(5),             output3,    X,  99, 1, Z)," &
+        "87  (BC_4,  PDATA(6),             observe_only, X)," &
+        "86  (BC_1,  PDATA(6),             output3,    X,  99, 1, Z)," &
+        "85  (BC_4,  PDATA(7),             observe_only, X)," &
+        "84  (BC_1,  PDATA(7),             output3,    X,  99, 1, Z)," &
+        "83  (BC_4,  PDATA(8),             observe_only, X)," &
+        "82  (BC_1,  *,                    control,    1)," &
+        "81  (BC_1,  PDATA(8),             output3,    X,  82, 1, Z)," &
+        "80  (BC_4,  PDATA(9),             observe_only, X)," &
+        "79  (BC_1,  PDATA(9),             output3,    X,  82, 1, Z)," &
+        "78  (BC_4,  PDATA(10),            observe_only, X)," &
+        "77  (BC_1,  PDATA(10),            output3,    X,  82, 1, Z)," &
+        "76  (BC_4,  PDATA(11),            observe_only, X)," &
+        "75  (BC_1,  PDATA(11),            output3,    X,  82, 1, Z)," &
+        "74  (BC_4,  PDATA(12),            observe_only, X)," &
+        "73  (BC_1,  PDATA(12),            output3,    X,  82, 1, Z)," &
+        "72  (BC_4,  PDATA(13),            observe_only, X)," &
+        "71  (BC_1,  PDATA(13),            output3,    X,  82, 1, Z)," &
+        "70  (BC_4,  PDATA(14),            observe_only, X)," &
+        "69  (BC_1,  PDATA(14),            output3,    X,  82, 1, Z)," &
+        "68  (BC_4,  PDATA(15),            observe_only, X)," &
+        "67  (BC_1,  PDATA(15),            output3,    X,  82, 1, Z)," &
+        "66  (BC_4,  PDATA(16),            observe_only, X)," &
+        "65  (BC_1,  *,                    control,    1)," &
+        "64  (BC_1,  PDATA(16),            output3,    X,  65, 1, Z)," &
+        "63  (BC_4,  PDATA(17),            observe_only, X)," &
+        "62  (BC_1,  PDATA(17),            output3,    X,  65, 1, Z)," &
+        "61  (BC_4,  PDATA(18),            observe_only, X)," &
+        "60  (BC_1,  PDATA(18),            output3,    X,  65, 1, Z)," &
+        "59  (BC_4,  PDATA(19),            observe_only, X)," &
+        "58  (BC_1,  PDATA(19),            output3,    X,  65, 1, Z)," &
+        "57  (BC_4,  PDATA(20),            observe_only, X)," &
+        "56  (BC_1,  PDATA(20),            output3,    X,  65, 1, Z)," &
+        "55  (BC_4,  PDATA(21),            observe_only, X)," &
+        "54  (BC_1,  PDATA(21),            output3,    X,  65, 1, Z)," &
+        "53  (BC_4,  PDATA(22),            observe_only, X)," &
+        "52  (BC_1,  PDATA(22),            output3,    X,  65, 1, Z)," &
+        "51  (BC_4,  PDATA(23),            observe_only, X)," &
+        "50  (BC_1,  PDATA(23),            output3,    X,  65, 1, Z)," &
+        "49  (BC_4,  PDATA(24),            observe_only, X)," &
+        "48  (BC_1,  *,                    control,    1)," &
+        "47  (BC_1,  PDATA(24),            output3,    X,  48, 1, Z)," &
+        "46  (BC_4,  PDATA(25),            observe_only, X)," &
+        "45  (BC_1,  PDATA(25),            output3,    X,  48, 1, Z)," &
+        "44  (BC_4,  PDATA(26),            observe_only, X)," &
+        "43  (BC_1,  PDATA(26),            output3,    X,  48, 1, Z)," &
+        "42  (BC_4,  PDATA(27),            observe_only, X)," &
+        "41  (BC_1,  PDATA(27),            output3,    X,  48, 1, Z)," &
+        "40  (BC_4,  PDATA(28),            observe_only, X)," &
+        "39  (BC_1,  PDATA(28),            output3,    X,  48, 1, Z)," &
+        "38  (BC_4,  PDATA(29),            observe_only, X)," &
+        "37  (BC_1,  PDATA(29),            output3,    X,  48, 1, Z)," &
+        "36  (BC_4,  PDATA(30),            observe_only, X)," &
+        "35  (BC_1,  PDATA(30),            output3,    X,  48, 1, Z)," &
+        "34  (BC_4,  PDATA(31),            observe_only, X)," &
+        "33  (BC_1,  PDATA(31),            output3,    X,  48, 1, Z)," &
+        "32  (BC_4,  PTOUT(0),             observe_only, X)," &
+        "31  (BC_1,  *,                    control,    1)," &
+        "30  (BC_1,  PTOUT(0),             output3,    X,  31, 1, Z)," &
+        "29  (BC_4,  PTOUT(1),             observe_only, X)," &
+        "28  (BC_1,  *,                    control,    1)," &
+        "27  (BC_1,  PTOUT(1),             output3,    X,  28, 1, Z)," &
+        "26  (BC_4,  PTOUT(2),             observe_only, X)," &
+        "25  (BC_1,  *,                    control,    1)," &
+        "24  (BC_1,  PTOUT(2),             output3,    X,  25, 1, Z)," &
+        "23  (BC_4,  PTOUT(3),             observe_only, X)," &
+        "22  (BC_1,  *,                    control,    1)," &
+        "21  (BC_1,  PTOUT(3),             output3,    X,  22, 1, Z)," &
+        "20  (BC_4,  PTCLK0,               observe_only, X)," &
+        "19  (BC_1,  *,                    control,    1)," &
+        "18  (BC_1,  PTCLK0,               output3,    X,  19, 1, Z)," &
+        "17  (BC_4,  PnXBACK,              observe_only, X)," &
+        "16  (BC_1,  *,                    control,    1)," &
+        "15  (BC_1,  PnXBACK,              output3,    X,  16, 1, Z)," &
+        "14  (BC_4,  PnXBREQ,              observe_only, X)," &
+        "13  (BC_1,  *,                    control,    1)," &
+        "12  (BC_1,  PnXBREQ,              output3,    X,  13, 1, Z)," &
+        "11  (BC_4,  PnXDACK(1),           observe_only, X)," &
+        "10  (BC_1,  *,                    control,    1)," &
+        "9   (BC_1,  PnXDACK(1),           output3,    X,  10, 1, Z)," &
+        "8   (BC_4,  PnXDREQ(1),           observe_only, X)," &
+        "7   (BC_1,  *,                    control,    1)," &
+        "6   (BC_1,  PnXDREQ(1),           output3,    X,   7, 1, Z)," &
+        "5   (BC_4,  PnXDACK(0),           observe_only, X)," &
+        "4   (BC_1,  *,                    control,    1)," &
+        "3   (BC_1,  PnXDACK(0),           output3,    X,   4, 1, Z)," &
+        "2   (BC_4,  PnXDREQ(0),           observe_only, X)," &
+        "1   (BC_1,  *,                    control,    1)," &
+        "0   (BC_1,  PnXDREQ(0),           output3,    X,   1, 1, Z)";
+
+end S3C2410;

@@ -1,0 +1,5 @@
+"usbmain.c", line 53: Warning: C2870W: variable 'oldTmp1' declared but not used
+"usbmain.c", line 53: Warning: C2870W: variable 'tmp1' declared but not used
+"usbmain.c", line 53: Warning: C2870W: variable 'i' declared but not used
+"usbmain.c", line 117: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+usbmain.c: 4 warnings, 0 errors, 0 serious errors

@@ -1,0 +1,44 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: sjf - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\r102\LOCALS~1\Temp\RSP30B.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Debug/" /Fp"Debug/sjf.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"D:\kingmos\kingmos\arch\s3c2410\jtag\SJF\sjf.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\r102\LOCALS~1\Temp\RSP30B.tmp" 
+Creating temporary file "C:\DOCUME~1\r102\LOCALS~1\Temp\RSP30C.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/sjf.pdb" /debug /machine:I386 /out:"Debug/sjf.exe" /pdbtype:sept 
+.\Debug\mem_rdwr.obj
+.\Debug\k9s1208.obj
+.\Debug\jtag.obj
+.\Debug\pin2410.obj
+.\Debug\ppt.obj
+.\Debug\sjf.obj
+.\Debug\strata32.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\r102\LOCALS~1\Temp\RSP30C.tmp"
+<h3>Output Window</h3>
+Compiling...
+sjf.c
+d:\kingmos\kingmos\arch\s3c2410\jtag\sjf\sjf.c(72) : warning C4013: 'strcpy' undefined; assuming extern returning int
+d:\kingmos\kingmos\arch\s3c2410\jtag\sjf\sjf.c(75) : warning C4013: 'atoi' undefined; assuming extern returning int
+d:\kingmos\kingmos\arch\s3c2410\jtag\sjf\sjf.c(149) : warning C4013: 'exit' undefined; assuming extern returning int
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/sjf.bsc"  .\Debug\mem_rdwr.sbr .\Debug\k9s1208.sbr .\Debug\jtag.sbr .\Debug\pin2410.sbr .\Debug\ppt.sbr .\Debug\sjf.sbr .\Debug\strata32.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+sjf.exe - 0 error(s), 3 warning(s)
+</pre>
+</body>
+</html>

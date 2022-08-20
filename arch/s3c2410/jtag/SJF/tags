@@ -1,0 +1,309 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.4	//
+ADDR0	pin2410.h	84;"	d
+ADDR0_CON	pin2410.h	83;"	d
+ADDR1	pin2410.h	86;"	d
+ADDR10	pin2410.h	95;"	d
+ADDR11	pin2410.h	96;"	d
+ADDR12	pin2410.h	97;"	d
+ADDR13	pin2410.h	98;"	d
+ADDR14	pin2410.h	99;"	d
+ADDR15	pin2410.h	100;"	d
+ADDR16	pin2410.h	102;"	d
+ADDR16_CON	pin2410.h	101;"	d
+ADDR17	pin2410.h	104;"	d
+ADDR17_CON	pin2410.h	103;"	d
+ADDR18	pin2410.h	106;"	d
+ADDR18_CON	pin2410.h	105;"	d
+ADDR19	pin2410.h	108;"	d
+ADDR19_CON	pin2410.h	107;"	d
+ADDR1_15_CON	pin2410.h	85;"	d
+ADDR2	pin2410.h	87;"	d
+ADDR20	pin2410.h	110;"	d
+ADDR20_CON	pin2410.h	109;"	d
+ADDR21	pin2410.h	112;"	d
+ADDR21_CON	pin2410.h	111;"	d
+ADDR22	pin2410.h	114;"	d
+ADDR22_CON	pin2410.h	113;"	d
+ADDR23	pin2410.h	116;"	d
+ADDR23_CON	pin2410.h	115;"	d
+ADDR24	pin2410.h	118;"	d
+ADDR24_CON	pin2410.h	117;"	d
+ADDR25	pin2410.h	120;"	d
+ADDR25_CON	pin2410.h	119;"	d
+ADDR26	pin2410.h	122;"	d
+ADDR26_CON	pin2410.h	121;"	d
+ADDR3	pin2410.h	88;"	d
+ADDR4	pin2410.h	89;"	d
+ADDR5	pin2410.h	90;"	d
+ADDR6	pin2410.h	91;"	d
+ADDR7	pin2410.h	92;"	d
+ADDR8	pin2410.h	93;"	d
+ADDR9	pin2410.h	94;"	d
+ALE	pin2410.h	126;"	d
+BAD_CHECK	k9s1208.c	8;"	d	file:
+BLOCK_ERASE	k9s1208.c	228;"	d	file:
+BLOCK_ERASE_CONFIRM	k9s1208.c	229;"	d	file:
+BYPASS	jtag.h	29;"	d
+CC	Makefile	/^CC    = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -DDEBUG -D__linux__ -g$/;"	m
+CLE	pin2410.h	125;"	d
+DATA0_7_CON	pin2410.h	11;"	d
+DATA0_IN	pin2410.h	12;"	d
+DATA0_OUT	pin2410.h	13;"	d
+DATA10_IN	pin2410.h	34;"	d
+DATA10_OUT	pin2410.h	35;"	d
+DATA11_IN	pin2410.h	36;"	d
+DATA11_OUT	pin2410.h	37;"	d
+DATA12_IN	pin2410.h	38;"	d
+DATA12_OUT	pin2410.h	39;"	d
+DATA13_IN	pin2410.h	40;"	d
+DATA13_OUT	pin2410.h	41;"	d
+DATA14_IN	pin2410.h	42;"	d
+DATA14_OUT	pin2410.h	43;"	d
+DATA15_IN	pin2410.h	44;"	d
+DATA15_OUT	pin2410.h	45;"	d
+DATA16_23_CON	pin2410.h	47;"	d
+DATA16_IN	pin2410.h	48;"	d
+DATA16_OUT	pin2410.h	49;"	d
+DATA17_IN	pin2410.h	50;"	d
+DATA17_OUT	pin2410.h	51;"	d
+DATA18_IN	pin2410.h	52;"	d
+DATA18_OUT	pin2410.h	53;"	d
+DATA19_IN	pin2410.h	54;"	d
+DATA19_OUT	pin2410.h	55;"	d
+DATA1_IN	pin2410.h	14;"	d
+DATA1_OUT	pin2410.h	15;"	d
+DATA20_IN	pin2410.h	56;"	d
+DATA20_OUT	pin2410.h	57;"	d
+DATA21_IN	pin2410.h	58;"	d
+DATA21_OUT	pin2410.h	59;"	d
+DATA22_IN	pin2410.h	60;"	d
+DATA22_OUT	pin2410.h	61;"	d
+DATA23_IN	pin2410.h	62;"	d
+DATA23_OUT	pin2410.h	63;"	d
+DATA24_31_CON	pin2410.h	65;"	d
+DATA24_IN	pin2410.h	66;"	d
+DATA24_OUT	pin2410.h	67;"	d
+DATA25_IN	pin2410.h	68;"	d
+DATA25_OUT	pin2410.h	69;"	d
+DATA26_IN	pin2410.h	70;"	d
+DATA26_OUT	pin2410.h	71;"	d
+DATA27_IN	pin2410.h	72;"	d
+DATA27_OUT	pin2410.h	73;"	d
+DATA28_IN	pin2410.h	74;"	d
+DATA28_OUT	pin2410.h	75;"	d
+DATA29_IN	pin2410.h	76;"	d
+DATA29_OUT	pin2410.h	77;"	d
+DATA2_IN	pin2410.h	16;"	d
+DATA2_OUT	pin2410.h	17;"	d
+DATA30_IN	pin2410.h	78;"	d
+DATA30_OUT	pin2410.h	79;"	d
+DATA31_IN	pin2410.h	80;"	d
+DATA31_OUT	pin2410.h	81;"	d
+DATA3_IN	pin2410.h	18;"	d
+DATA3_OUT	pin2410.h	19;"	d
+DATA4_IN	pin2410.h	20;"	d
+DATA4_OUT	pin2410.h	21;"	d
+DATA5_IN	pin2410.h	22;"	d
+DATA5_OUT	pin2410.h	23;"	d
+DATA6_IN	pin2410.h	24;"	d
+DATA6_OUT	pin2410.h	25;"	d
+DATA7_IN	pin2410.h	26;"	d
+DATA7_OUT	pin2410.h	27;"	d
+DATA8_15_CON	pin2410.h	29;"	d
+DATA8_IN	pin2410.h	30;"	d
+DATA8_OUT	pin2410.h	31;"	d
+DATA9_IN	pin2410.h	32;"	d
+DATA9_OUT	pin2410.h	33;"	d
+Delay	jtag.c	/^void Delay(int count) \/\/ unit = 100ns$/;"	f
+ECC_CHECK	k9s1208.c	9;"	d	file:
+ECP_ECR	ppt.c	52;"	d	file:
+ECR_DISDMA	ppt.c	55;"	d	file:
+ECR_DISSVCINT	ppt.c	56;"	d	file:
+ECR_DISnERRORINT	ppt.c	54;"	d	file:
+ECR_STANDARD	ppt.c	53;"	d	file:
+EXTEST	jtag.h	28;"	d
+FALSE	def.h	12;"	d
+GetValidPpt	ppt.c	/^int GetValidPpt(void)$/;"	f
+HIGH	jtag.h	7;"	d
+IDCODE	jtag.h	30;"	d
+ID_K9S1208V0M	k9s1208.c	252;"	d	file:
+InputPpt	ppt.h	19;"	d
+InstallGiveIo	ppt.c	/^int InstallGiveIo(void)$/;"	f
+JTAG_DELAY	jtag.c	24;"	d	file:
+JTAG_GET_TDO	jtag.h	24;"	d
+JTAG_ReadId	jtag.c	/^void JTAG_ReadId(void)$/;"	f
+JTAG_Reset	jtag.c	/^void JTAG_Reset(void)$/;"	f
+JTAG_RunTestldleState	jtag.c	/^void JTAG_RunTestldleState( void )$/;"	f
+JTAG_SET	jtag.h	22;"	d
+JTAG_ShiftDRState	jtag.c	/^void  JTAG_ShiftDRState(char *wrDR, char *rdDR)$/;"	f
+JTAG_ShiftDRStateNoTdo	jtag.c	/^void  JTAG_ShiftDRStateNoTdo(char *wrDR)$/;"	f
+JTAG_ShiftIRState	jtag.c	/^void  JTAG_ShiftIRState(char *wrIR)$/;"	f
+K9S1208_JtagInit	k9s1208.c	/^void K9S1208_JtagInit(void)$/;"	f
+K9S1208_Menu	k9s1208.c	/^void K9S1208_Menu(void)$/;"	f
+K9S1208_PrintBlock	k9s1208.c	/^void K9S1208_PrintBlock(void)\/\/ Printf one page$/;"	f
+K9S1208_Program	k9s1208.c	/^void K9S1208_Program(void)$/;"	f
+LOW	jtag.h	6;"	d
+LPT1	ppt.h	14;"	d
+LPT2	ppt.h	15;"	d
+LPT3	ppt.h	16;"	d
+LoadImageFile	sjf.c	/^int LoadImageFile(U8 *buf,int size)$/;"	f
+MRW_JtagInit	mem_rdwr.c	/^void MRW_JtagInit(void)$/;"	f
+MRW_Menu	mem_rdwr.c	/^void MRW_Menu(void)$/;"	f
+MRW_Rd16	mem_rdwr.c	/^U16 MRW_Rd16(U32 addr,int en_nBE,U32 bs)$/;"	f
+MRW_Rd16Q	mem_rdwr.c	/^U16 MRW_Rd16Q(U32 addr,int en_nBE,U32 bs)$/;"	f
+MRW_Rd32	mem_rdwr.c	/^U32 MRW_Rd32(U32 addr,int en_nBE,U32 bs)$/;"	f
+MRW_Rd32Q	mem_rdwr.c	/^U32 MRW_Rd32Q(U32 addr,int en_nBE,U32 bs)$/;"	f
+MRW_Rd8	mem_rdwr.c	/^U8 MRW_Rd8(U32 addr)$/;"	f
+MRW_Rd8Q	mem_rdwr.c	/^U8 MRW_Rd8Q(U32 addr)$/;"	f
+MRW_RdByte	mem_rdwr.c	/^static int MRW_RdByte(U32 addr,U8 *pDataByte)$/;"	f	file:
+MRW_RdHW	mem_rdwr.c	/^static int MRW_RdHW(U32 addr,U16 *pDataHW)$/;"	f	file:
+MRW_RdWord	mem_rdwr.c	/^static int MRW_RdWord(U32 addr,U32 *pDataWord)$/;"	f	file:
+MRW_Wr16	mem_rdwr.c	/^void MRW_Wr16(U32 addr,U16 data,int en_nBE,U32 bs)$/;"	f
+MRW_Wr16Q	mem_rdwr.c	/^void MRW_Wr16Q(U32 addr,U16 data,int en_nBE,U32 bs)$/;"	f
+MRW_Wr32	mem_rdwr.c	/^void MRW_Wr32(U32 addr,U32 data,int en_nBE,U32 bs)$/;"	f
+MRW_Wr32Q	mem_rdwr.c	/^void MRW_Wr32Q(U32 addr,U32 data,int en_nBE,U32 bs)$/;"	f
+MRW_Wr8	mem_rdwr.c	/^void MRW_Wr8(U32 addr,U8 data)$/;"	f
+MRW_Wr8Q	mem_rdwr.c	/^void MRW_Wr8Q(U32 addr,U8 data)$/;"	f
+MRW_WrByte	mem_rdwr.c	/^static int MRW_WrByte(U32 addr,U8 dataByte)$/;"	f	file:
+MRW_WrHW	mem_rdwr.c	/^static int MRW_WrHW(U32 addr,U16 dataHW)$/;"	f	file:
+MRW_WrWord	mem_rdwr.c	/^static int MRW_WrWord(U32 addr,U32 dataWord)$/;"	f	file:
+NCON0	pin2410.h	141;"	d
+NF_ADDR	k9s1208.c	/^static void NF_ADDR(U8 addr)$/;"	f	file:
+NF_CMD	k9s1208.c	/^static void NF_CMD(U8 cmd)$/;"	f	file:
+NF_CheckId	k9s1208.c	/^static U16 NF_CheckId(void)$/;"	f	file:
+NF_EraseBlock	k9s1208.c	/^static int NF_EraseBlock(U32 block)$/;"	f	file:
+NF_Init	k9s1208.c	/^static void NF_Init(void)$/;"	f	file:
+NF_IsBadBlock	k9s1208.c	/^static int NF_IsBadBlock(U32 block)$/;"	f	file:
+NF_MarkBadBlock	k9s1208.c	/^static int NF_MarkBadBlock(U32 block)$/;"	f	file:
+NF_RDDATA	k9s1208.c	/^static U8 NF_RDDATA(void)$/;"	f	file:
+NF_ReadPage	k9s1208.c	/^static int NF_ReadPage(U32 block,U32 page,U8 *buffer,U8 *spareBuf)$/;"	f	file:
+NF_Reset	k9s1208.c	/^static void NF_Reset(void)$/;"	f	file:
+NF_WAITRB	k9s1208.c	/^static void NF_WAITRB(void)$/;"	f	file:
+NF_WRDATA	k9s1208.c	/^static void NF_WRDATA(U8 data)$/;"	f	file:
+NF_WritePage	k9s1208.c	/^static int NF_WritePage(U32 block,U32 page,U8 *buffer,U8 *spareBuf)$/;"	f	file:
+NF_nFCE_H	k9s1208.c	/^static void NF_nFCE_H(void)$/;"	f	file:
+NF_nFCE_L	k9s1208.c	/^static void NF_nFCE_L(void)$/;"	f	file:
+OpenImageFile	sjf.c	/^void OpenImageFile(char *filename)$/;"	f
+OpenPpt	sjf.c	/^void OpenPpt(void)$/;"	f
+OutputPpt	ppt.h	18;"	d
+PAGE_PROGRAM	k9s1208.c	227;"	d	file:
+Program28F128J3A	strata32.c	/^void Program28F128J3A(void)$/;"	f
+READ_1_1	k9s1208.c	224;"	d	file:
+READ_1_2	k9s1208.c	225;"	d	file:
+READ_2	k9s1208.c	226;"	d	file:
+READ_ID	k9s1208.c	222;"	d	file:
+READ_STATUS	k9s1208.c	230;"	d	file:
+RESET	k9s1208.c	223;"	d	file:
+S16	def.h	7;"	d
+S2410_Addr2Bank	mem_rdwr.c	/^int S2410_Addr2Bank(U32 addr)$/;"	f
+S2410_Assert_nGCS	mem_rdwr.c	/^void S2410_Assert_nGCS(U32 addr)$/;"	f
+S2410_Deassert_nGCS	mem_rdwr.c	/^void S2410_Deassert_nGCS(U32 addr)$/;"	f
+S2410_GetDataByte	pin2410.c	/^U8 S2410_GetDataByte(void)$/;"	f
+S2410_GetDataHW	pin2410.c	/^U16 S2410_GetDataHW(void)$/;"	f
+S2410_GetDataWord	pin2410.c	/^U32 S2410_GetDataWord(void)$/;"	f
+S2410_GetPin	pin2410.c	/^char S2410_GetPin(int index)$/;"	f
+S2410_InitCell	pin2410.c	/^void S2410_InitCell(void)$/;"	f
+S2410_MAX_CELL_INDEX	pin2410.h	9;"	d
+S2410_SetAddr	pin2410.c	/^void S2410_SetAddr(U32 addr)$/;"	f
+S2410_SetDataByte	pin2410.c	/^void S2410_SetDataByte(U8 data)$/;"	f
+S2410_SetDataHW	pin2410.c	/^void S2410_SetDataHW(U16 data)$/;"	f
+S2410_SetDataWord	pin2410.c	/^void S2410_SetDataWord(U32 data)$/;"	f
+S2410_SetPin	pin2410.c	/^void S2410_SetPin(int index, char value)$/;"	f
+S32	def.h	6;"	d
+S8	def.h	9;"	d
+SAMPLE_PRELOAD	jtag.h	31;"	d
+SEQ_DATA_INPUT	k9s1208.c	221;"	d	file:
+SetPptCompMode	ppt.c	/^void SetPptCompMode(void)$/;"	f
+Strata_BlankCheck	strata32.c	/^int Strata_BlankCheck(int targetAddr,int targetSize) $/;"	f
+Strata_CheckBlockLock	strata32.c	/^int Strata_CheckBlockLock(int targetAddr) $/;"	f
+Strata_CheckDevice	strata32.c	/^int Strata_CheckDevice(int targetAddr) $/;"	f
+Strata_CheckID	strata32.c	/^int Strata_CheckID(int targetAddr) $/;"	f
+Strata_EraseSector	strata32.c	/^void Strata_EraseSector(int targetAddress) $/;"	f
+Strata_ProgFlash	strata32.c	/^int Strata_ProgFlash(U32 realAddr,U32 data) $/;"	f
+TARGET_ADDR_28F128	strata32.c	23;"	d	file:
+TCK_H	jtag.h	16;"	d
+TCK_L	jtag.h	19;"	d
+TDI_H	jtag.h	17;"	d
+TDI_L	jtag.h	20;"	d
+TMS_H	jtag.h	18;"	d
+TMS_L	jtag.h	21;"	d
+TRUE	def.h	11;"	d
+U16	def.h	5;"	d
+U32	def.h	4;"	d
+U8	def.h	8;"	d
+WRITEVERIFY	k9s1208.c	238;"	d	file:
+_RD	strata32.c	49;"	d	file:
+_RESET	strata32.c	50;"	d	file:
+_WR	strata32.c	48;"	d	file:
+__DEF_H__	def.h	2;"	d
+__JTAG_H__	jtag.h	2;"	d
+__K9S1208_H__	k9s1208.h	2;"	d
+__MEM_RDWR_H__	mem_rdwr.h	2;"	d
+__PIN2410_H__	pin2410.h	2;"	d
+__PPT_H__	ppt.h	2;"	d
+__SJF_H__	sjf.h	2;"	d
+__STRATA32_H__	strata32.h	2;"	d
+_inp	ppt.h	5;"	d
+_outp	ppt.h	6;"	d
+addrCellIndex	pin2410.c	/^int  addrCellIndex[27];$/;"	v
+bankWidth	mem_rdwr.c	/^int bankWidth[8]={16,16,16,16,16,16,16,16};$/;"	v
+bank_nBE	mem_rdwr.c	/^int bank_nBE[8]={0,0,1,1,1,1,1,1};$/;"	v
+blockBuf	k9s1208.c	/^static U8 blockBuf[0x4000];$/;"	v	file:
+dataInCellIndex	pin2410.c	/^int  dataInCellIndex[32];$/;"	v
+dataOutCellIndex	pin2410.c	/^int  dataOutCellIndex[32];$/;"	v
+delayLoopCount	jtag.c	/^int delayLoopCount;$/;"	v
+error_erase	strata32.c	/^static int error_erase=0;       \/\/ Read Status Register, SR.5$/;"	v	file:
+error_program	strata32.c	/^static int error_program=0;     \/\/ Read Status Register, SR.4$/;"	v	file:
+function	k9s1208.c	/^static void *function[][2]=$/;"	v	file:
+function	sjf.c	/^static void *function[]=$/;"	v	file:
+imageSize	sjf.c	/^U32 imageSize;$/;"	v
+inCellValue	pin2410.c	/^char inCellValue[S2410_MAX_CELL_INDEX+2];$/;"	v
+io_access_off	ppt.c	/^void io_access_off( unsigned long port )$/;"	f
+io_access_off	ppt.c	26;"	d	file:
+io_access_on	ppt.c	/^int io_access_on( unsigned long port )$/;"	f
+io_access_on	ppt.c	25;"	d	file:
+main	sjf.c	/^void main(int argc,char *argv[])$/;"	f
+nBE0	pin2410.h	134;"	d
+nBE1	pin2410.h	135;"	d
+nBE2	pin2410.h	136;"	d
+nBE3	pin2410.h	137;"	d
+nFCE	pin2410.h	128;"	d
+nFRE	pin2410.h	130;"	d
+nFWE	pin2410.h	129;"	d
+nGCS0	pin2410.h	158;"	d
+nGCS0_ETC_CON	pin2410.h	157;"	d
+nGCS1	pin2410.h	156;"	d
+nGCS1_CON	pin2410.h	155;"	d
+nGCS2	pin2410.h	154;"	d
+nGCS2_CON	pin2410.h	153;"	d
+nGCS3	pin2410.h	152;"	d
+nGCS3_CON	pin2410.h	151;"	d
+nGCS4	pin2410.h	150;"	d
+nGCS4_CON	pin2410.h	149;"	d
+nGCS5	pin2410.h	148;"	d
+nGCS5_CON	pin2410.h	147;"	d
+nGCS6	pin2410.h	146;"	d
+nGCS67_CON	pin2410.h	144;"	d
+nGCS7	pin2410.h	145;"	d
+nOE	pin2410.h	133;"	d
+nSCAS	pin2410.h	139;"	d
+nSRAS	pin2410.h	138;"	d
+nWAIT	pin2410.h	142;"	d
+nWE	pin2410.h	132;"	d
+outCellValue	pin2410.c	/^char outCellValue[S2410_MAX_CELL_INDEX+2];$/;"	v
+seBuf	k9s1208.c	/^static U8 seBuf[16]={0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff,0xff};$/;"	v	file:
+srcAddr	strata32.c	/^static U32 srcAddr;$/;"	v	file:
+srcFileName	sjf.c	/^char srcFileName[256];$/;"	v
+stream	sjf.c	/^FILE *stream;$/;"	v
+targetAddress	strata32.c	/^static U32 targetAddress; $/;"	v	file:
+targetBlock	k9s1208.c	/^static U32 targetBlock;	    \/\/ Block number (0 ~ 4095)$/;"	v	file:
+targetOffset	strata32.c	/^static U32 targetOffset; $/;"	v	file:
+targetSize	k9s1208.c	/^static U32 targetSize;	    \/\/ Total byte size $/;"	v	file:
+targetSize	strata32.c	/^static U32 targetSize; $/;"	v	file:
+validPpt	ppt.c	/^int validPpt; $/;"	v

@@ -1,0 +1,7 @@
+LISTS =  \
+	kingmos_private \
+	library \
+	drivers \
+    arch \
+	component \
+	application

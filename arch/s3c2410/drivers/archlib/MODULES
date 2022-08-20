@@ -1,0 +1,17 @@
+# *********************************************************
+#   Copyright (c)  Î¢Âß¼­(WEILUOJI). All rights reserved.  
+# *********************************************************
+# Version = 1.0.0
+
+
+MODULENAME = archlib
+
+MODULETYPE = LIBRARY
+
+
+LOCAL_STATICLIBS = \
+                   $(__SDK_LIBS)/libserarch.a \
+                   $(__SDK_LIBS)/libsysdev.a
+
+
+LOCAL_FILES = archlib.c

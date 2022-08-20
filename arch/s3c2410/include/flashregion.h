@@ -1,0 +1,22 @@
+#ifndef __FLASHREGION_H
+#define __FLASHREGION_H
+
+#define STEPING_BASE 0
+#define STEPING_SIZE (4 << 10)
+
+#define BOOT_BASE (16 << 10)
+#define BOOT_SIZE (32 << 10)
+
+#define OSIMAGE_BASE (BOOT_BASE + BOOT_SIZE)
+#define OSIMAGE_SIZE ((6 << 20) + 10*(16 << 10))
+
+#define REGISTRY_BASE (OSIMAGE_BASE + OSIMAGE_SIZE)
+#define REGISTRY_SIZE (256 << 10)
+
+#define FLASHDSK_BASE (REGISTRY_BASE + REGISTRY_SIZE)
+#define FLASHMUTEXNAME ("FLASHOPERATE")
+#endif //__CPU_H
+
+
+
+

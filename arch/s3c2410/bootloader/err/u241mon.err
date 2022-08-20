@@ -1,0 +1,7 @@
+"u241mon.c", line 70: Warning: C2207W: inventing 'extern int __rt_lib_init();'
+"u241mon.c", line 147: Warning: C2870W: variable 'key' declared but not used
+"u241mon.c", line 147: Warning: C2870W: variable 'i' declared but not used
+"u241mon.c", line 206: Warning: C2870W: variable 'i' declared but not used
+"u241mon.c", line 441: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+"u241mon.c", line 442: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+u241mon.c: 6 warnings, 0 errors, 0 serious errors

@@ -1,0 +1,324 @@
+#define STRICT
+#define WIN32_LEAN_AND_MEAN
+
+#include <windows.h>
+#include <windowsx.h>
+#include <commctrl.h>
+#include <tchar.h>
+#include <string.h>
+#include <process.h>
+#include <stdlib.h>
+//#include <conio.h>
+//#include <stdio.h>
+//#include <assert.h>
+
+#include "resource.h"
+
+#include "def.h"
+#include "dnw.h"
+#include "engine.h"
+#include "fileopen.h"
+#include "d_box.h"
+
+#include "rwbulk.h"
+
+/* 
+   To compile rwbulk.c, the followings should be added.
+   1. linker option: usbd.lib,setupapi.lib 
+   2. additional library path: C:\NTDDK\libfre\i386
+   3. additional include directories: C:\NTDDK\inc
+   4. copy bulkusb.h,guid829.h from bulkusb directory.
+*/
+
+HANDLE hWrite = INVALID_HANDLE_VALUE;
+HANDLE hRead = INVALID_HANDLE_VALUE;
+
+static volatile char *txBuf;
+static volatile DWORD iTxBuf;
+static DWORD txBufSize;
+
+DWORD downloadAddress;
+TCHAR szDownloadAddress[16];
+
+
+void UsbTxFile(void *args);
+
+
+void MenuUsbStatus(HWND hwnd)
+{
+    dumpUsbConfig();
+}
+
+
+void MenuUsbTransmit(HWND hwnd)
+{
+    ULONG i;
+    HANDLE hFile;
+    ULONG fileSize;
+    USHORT cs=0;
+    BOOL result;
+    unsigned long threadResult;
+
+    hWrite = open_file( outPipe);
+    
+    if(hWrite==INVALID_HANDLE_VALUE)
+    {
+	MessageBox(hwnd,TEXT("Can't open USB device.\n"),TEXT("Error"),
+		   MB_OK | MB_ICONINFORMATION );
+	return;
+    }
+    
+    result=PopFileOpenDlg(hwnd,szFileName,szTitleName);
+    
+    if(result==0) //file open fail
+    {
+	CloseHandle(hWrite);
+	return;
+    }
+
+    hFile=CreateFile(szFileName,GENERIC_READ,FILE_SHARE_READ,NULL,OPEN_EXISTING,0,NULL);
+    if(hFile==INVALID_HANDLE_VALUE)
+    {
+	EB_Printf(TEXT("[ERROR:File Open]\n") );
+	return;
+    }
+    
+    fileSize=GetFileSize(hFile,NULL);
+
+    txBuf=(char *)malloc(fileSize+10); 
+    if(txBuf==0)
+    {
+	EB_Printf(TEXT("[ERROR:Memory Allocation Fail:(%d)]\n"),fileSize+6 );
+	return;
+    }
+
+    ReadFile(hFile,(void *)(txBuf+8),fileSize,&txBufSize,NULL);
+    if(txBufSize!=fileSize)    
+    {
+    	EB_Printf(TEXT("[ERROR:File Size Error]\n") );
+	return;
+    }
+
+    *((DWORD *)txBuf+0)=downloadAddress;
+    *((DWORD *)txBuf+1)=fileSize+10;   //attach filesize(n+6+4) 
+    for(i=8;i<(fileSize+8);i++)
+	cs+=(BYTE)(txBuf[i]);
+    *((WORD *)(txBuf+8+fileSize))=cs;   //attach checksum 
+    
+    txBufSize+=10;
+    iTxBuf=0;
+
+    CloseHandle(hFile);
+    
+    threadResult=_beginthread( (void (*)(void *))UsbTxFile,0x2000,(void *)0);
+    
+    if(threadResult!=-1)
+    {
+	//Create the download progress dialogbox.
+	CreateDialog(_hInstance,MAKEINTRESOURCE(IDD_DIALOG1),hwnd,DownloadProgressProc); //modaless
+	//ShowWindow(_hDlgDownloadProgress,SW_SHOW); 
+    	//isn't needed because the dialog box already has WS_VISIBLE attribute.
+    }
+    else
+    {
+	EB_Printf("[ERROR:Can't creat a thread. Memory is not sufficient]\n");
+    }
+
+    //The dialog box will be closed at the end of TxFile().
+    //free(txBuf) & CloseHandle(hWrite) will be done in TxFile()
+}
+
+#define USB_OVERLAPPED_IO FALSE  //should be FALSE becasue USB overlapped IO doesn't work well.
+
+#define TX_SIZE (4096*4) 
+
+VOID CALLBACK UsbWriteCompleteRoutine(DWORD dwErrorCode,DWORD dwNumberOfBytesTransfered,
+	                              LPOVERLAPPED lpOverlapped)
+{
+    //nothing to do
+}
+
+void UsbTxFile(void *args)
+{
+    void *txBlk;
+    ULONG txBlkSize;
+    DWORD nBytesWrite;
+    DWORD txBufSize100;
+    DWORD temp;
+    DWORD count;
+
+#if USB_OVERLAPPED_IO
+    //NOTE: hWrite should have FILE_FLAG_OVERLAPPED attribute.
+    OVERLAPPED os;
+    memset(&os,0,sizeof(OVERLAPPED));
+
+    os.hEvent = CreateEvent(NULL,TRUE,FALSE,NULL);
+    if(os.hEvent==NULL)
+    {
+	EB_Printf(TEXT("[ERROR:DoRxTx os.hEvent]\n"));
+        free((void *)txBuf);
+        CloseHandle(hWrite);    
+	_endthread();
+    }
+#endif
+       
+    InitDownloadProgress();
+
+    txBufSize100=txBufSize/100;
+    if(txBufSize100==0)txBufSize100=1;
+    while(1)
+    {
+        if((txBufSize-iTxBuf) > TX_SIZE)
+	    txBlkSize=TX_SIZE;
+	else
+	    txBlkSize=txBufSize-iTxBuf;
+	
+	txBlk=(void *)(txBuf+iTxBuf);
+    #if USB_OVERLAPPED_IO
+	WriteFile(hWrite,txBlk,txBlkSize,&nBytesWrite,&os);
+        //...
+	GetOverlappedResult(hWrite,&os,&temp,FALSE); 	
+	//...   
+	//Why doesn't work GetOverlappedResult().
+	//It may seem that secbulk.sys doesn't support OverlappedIO.
+    #else
+	WriteFile(hWrite,txBlk,txBlkSize,&nBytesWrite,NULL);
+    #endif
+
+	//assert(nBytesWrite == WriteLen);
+
+	iTxBuf+=TX_SIZE;
+	
+	if( ((iTxBuf/txBufSize100)%2)==1 )
+	    DisplayDownloadProgress(iTxBuf/txBufSize100);
+	
+	if(downloadCanceled==1)break;	//download is canceled by user.
+
+	if(iTxBuf>=txBufSize)break;
+    }
+
+    CloseDownloadProgress();
+
+    free((void *)txBuf);
+
+    CloseHandle(hWrite);    
+
+#if USB_OVERLAPPED_IO    
+    CloseHandle(os);    
+#endif
+
+    _endthread();
+}
+
+
+
+
+void MenuUsbReceive(HWND hwnd)
+{
+/*  int nBytesRead, nBytes;
+    ULONG i, j;    
+    UINT success;
+
+
+    if (fRead)
+    {
+	//ReadLen=64;
+        hRead = open_file( inPipe);
+	pinBuf = malloc(ReadLen);
+
+        if (pinBuf) 
+	{
+	    success = ReadFile(hRead,
+	    	              pinBuf,
+                              ReadLen,
+	                      &nBytesRead,
+	                      NULL);
+            printf("<%s> R (%04.4d) : request %06.6d bytes -- %06.6d bytes read\n",
+                    inPipe, i, ReadLen, nBytesRead);
+        }
+	if (pinBuf)
+	{
+	    free(pinBuf);
+	}
+		
+	// close devices if needed
+	if(hRead != INVALID_HANDLE_VALUE)
+	    CloseHandle(hRead);
+    }
+*/
+
+    
+    ULONG i;    
+    UINT success;
+    UINT rxLength=128;
+    ULONG nBytesRead;
+    char *rxBuf;
+
+    rxBuf = (char *)malloc(rxLength);
+    if(rxBuf==NULL)return; 
+
+    EB_Printf("=============== USB Receive Test ==============\n");
+
+    hRead = open_file(inPipe);
+
+    success = ReadFile(hRead,
+     	               rxBuf,
+                       rxLength,
+	               &nBytesRead,
+	               NULL);
+    if(success)
+    {
+	for(i=0;i<rxLength;i++)
+	{
+	    EB_Printf("%2x ",rxBuf[i]);
+	    if(i%16==15)EB_Printf("\n");
+	}
+    }
+    else
+    {
+	EB_Printf("Error: can't receive data from the USBD\n");
+    }
+#if 0
+	//This part is only for S3C2410 USB signal quality test
+    EB_Printf("============ 4096*128byte Read Test ===========\n");
+
+    for(i=0;i<4096;i++)
+    {
+    	success = ReadFile(hRead,
+     	               rxBuf,
+                       rxLength,
+	               &nBytesRead,
+	               NULL);
+    	if(success)
+    	{
+	    EB_Printf("%2x,",(unsigned char)rxBuf[0]);
+    	}
+    	else
+    	{
+	    EB_Printf("Er,");
+    	}
+    	if(i%16==15)EB_Printf("\n");
+    }
+#endif   
+    EB_Printf("===============================================\n");
+
+    if (rxBuf)free(rxBuf);
+	
+    // close devices if needed
+    if(hRead != INVALID_HANDLE_VALUE)
+  	CloseHandle(hRead);
+}
+
+
+int IsUsbConnected(void)
+{
+    HANDLE hDEV = open_dev();
+
+    if ( hDEV!=INVALID_HANDLE_VALUE )
+    {
+	CloseHandle(hDEV);
+	
+	return 1;
+    }
+    return 0;
+}

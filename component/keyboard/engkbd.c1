@@ -1,0 +1,776 @@
+/***************************************************
+Copyright(c) 版权所有，1998-2003微逻辑。保留所有权利。
+***************************************************/
+/**************************************************
+文件说明：英文键盘
+版本号：1.0.0.456
+开发时期：2002-03-12
+作者：陈建明 Jami chen
+修改记录：
+**************************************************/
+#include <eframe.h>
+#include "resource.h"
+
+
+// *******************************************************
+// 变量定义区
+// *******************************************************
+typedef struct {
+	int (*Who)(void);
+	void (*Create)(void);
+	void (*Destroy)(void);
+	void (*Resume)(void);
+	int (*DoPAINT)( HWND hWnd, HDC hdc );
+	int (*DoLBUTTONDOWN)( HWND hWnd, int x, int y );
+	int (*DoLBUTTONUP)( HWND hWnd, int x, int y );
+	int (*DoMOUSEMOVE)( HWND hWnd, int x, int y );
+	BOOL (*GetKeyValue)( WORD * );
+}KEYDRV, FAR * LPKEYDRV;
+
+#define KBDBMPWIDTH  210
+#define KBDBMPHEIGHT 82
+
+//#define KEYBOARDWIDTH  210
+//#define KEYBOARDHEIGHT 84
+
+#define INVERTSHOW  0x0001
+#define NORMALSHOW  0x0002
+
+#define STARTX  1
+
+typedef struct {
+    BYTE    bVk;
+    TCHAR   cUnshift;
+    TCHAR   cShift;
+    int     iLeft;
+	int     iWidth;
+} KEYENTRY;
+
+#define NUM_KEYBDS 1
+#define NONEKEY 0
+//#define BLK_HEIGHT 16
+#define COLUMN_NUM 13
+#define ROW_NUM    5
+
+static int g_RowHeightList[ROW_NUM+1] = {1,18,34,50,66,82};
+
+// 键盘数据
+KEYENTRY g_engkeys[NUM_KEYBDS][ROW_NUM][COLUMN_NUM + 1] = {
+	// 第一个键盘
+	{
+		//第一行
+		{
+			{	VK_BACKQUOTE,		'`',	'~',	  0 + STARTX,	17},
+			{			 '1',		'1',	'!',	 18 + STARTX,	15},
+			{			 '2',		'2',	'@',	 34 + STARTX,	15},
+			{			 '3',		'3',	'#',	 50 + STARTX,	15},
+			{			 '4',		'4',	'$',	 66 + STARTX,	15},
+			{			 '5',		'5',	'%',	 82 + STARTX,	15},
+			{			 '6',		'6',	'^',	 98 + STARTX,	15},
+			{			 '7',		'7',	'&',	114 + STARTX,	15},
+			{			 '8',		'8',	'*',	130 + STARTX,	15},
+			{			 '9',		'9',	'(',	146 + STARTX,	15},
+			{			 '0',		'0',	')',	162 + STARTX,	15},
+			{		 VK_BACK,	  '\x8',  '\x8',	178 + STARTX,	17},
+			{		 VK_MOVE,		  0,      0,	196 + STARTX,	11},
+			{		 NONEKEY,		  0,	  0,	  0,	 0},
+		},
+		//第二行
+		{
+			{		  VK_TAB,	   '\t',   '\t',	  0 + STARTX,	24},
+			{			 'Q',		'q',    'Q',     25 + STARTX,	15},
+			{			 'W',		'w',    'W',     41 + STARTX,	15},
+			{			 'E',		'e',    'E',     57 + STARTX,	15},
+			{			 'R',		'r',    'R',     73 + STARTX,	15},
+			{			 'T',		't',    'T',     89 + STARTX,	15},
+			{			 'Y',		'y',    'Y',    105 + STARTX,	15},
+			{			 'U',		'u',    'U',    121 + STARTX,	15},
+			{			 'I',		'i',    'I',    137 + STARTX,	15},
+			{			 'O',		'o',    'O',    153 + STARTX,	15},
+			{			 'P',		'p',    'P',    169 + STARTX,	15},
+			{	VK_BACKSLASH,	   '\\',    '|',    185 + STARTX,	23},
+			{		 NONEKEY,		  0,	  0,	  0,	 0},
+		},
+		//第三行
+		{
+			{	  VK_CAPITAL,		  0,      0,      0 + STARTX,	28},
+			{			 'A',		'a',    'A',	 29 + STARTX,	15},
+			{			 'S',		's',    'S',     45 + STARTX,	15},
+			{			 'D',		'd',    'D',     61 + STARTX,	15},
+			{			 'F',		'f',    'F',     77 + STARTX,	15},
+			{			 'G',		'g',    'G',     93 + STARTX,	15},
+			{			 'H',		'h',    'H',    109 + STARTX,	15},
+			{			 'J',		'j',    'J',    125 + STARTX,	15},
+			{			 'K',		'k',    'K',    141 + STARTX,	15},
+			{			 'L',		'l',    'L',    157 + STARTX,	15},
+			{	VK_SEMICOLON,		';',    ':',    173 + STARTX,	15},
+			{	   VK_RETURN,     '\xD',  '\xD',    189 + STARTX,	19},
+			{		 NONEKEY,		  0,	  0,	  0,	 0},
+		},
+		//第四行
+		{
+			{		VK_SHIFT,		  0,      0,      0 + STARTX,	31},
+			{			 'Z',		'z',    'Z',     32 + STARTX,	15},
+			{			 'X',		'x',    'X',     48 + STARTX,	15},
+			{			 'C',		'c',    'C',     64 + STARTX,	15},
+			{			 'V',		'v',    'V',     80 + STARTX,	15},
+			{			 'B',		'b',    'B',     96 + STARTX,	15},
+			{			 'N',		'n',    'N',    112 + STARTX,	15},
+			{			 'M',		'm',    'M',    128 + STARTX,	15},
+			{		VK_COMMA,		',',    '<',    144 + STARTX,	15},
+			{	   VK_PERIOD,		'.',    '>',    160 + STARTX,	15},
+			{		   VK_UP,		  0,	  0,    176 + STARTX,	15},
+			{  VK_APOSTROPHE,	   '\'',   '\"',    192 + STARTX,	16},
+			{		 NONEKEY,		  0,	  0,	  0,	 0},
+		},
+		//第五行
+		{
+			{		 VK_TURN,	 	  0,      0,      0 + STARTX,	16},
+			{	   VK_HYPHEN,		'-',    '_',     17 + STARTX,	15},
+			{		VK_EQUAL,		'=',    '+',     33 + STARTX,	15},
+			{	 VK_LBRACKET,		'[',    '{',     49 + STARTX,	15},
+			{	 VK_RBRACKET,		']',    '}',     65 + STARTX,	15},
+			{		VK_SPACE,		' ',    ' ',     81 + STARTX,	62},
+			{		VK_SLASH,		'/',    '?',     144 + STARTX,	15},
+			{		 VK_LEFT,		  0,	  0,     160 + STARTX,	15},
+			{		 VK_DOWN,		  0,	  0,     176 + STARTX,	15},
+			{		VK_RIGHT,         0,	  0,     192 + STARTX,	16},
+			{		 NONEKEY,		  0,	  0,	  0,	 0},
+		},
+	},
+};
+
+static RECT eng_HitRect={0,0,0,0};  // 当前按键的位置
+static 	KEYENTRY *eng_lpHitKey = NULL; // 当前按下的键
+static BOOL Eng_KeyBroad_Capital = FALSE;  // 当前的CAPS状态
+static BOOL Eng_KeyBroad_Shift = FALSE;  // 当前的SHIFT状态
+static int g_iBitmapIndex = 0;   // 当前使用的位图序列号
+static BOOL g_bCursorLeft = FALSE;  // 当前鼠标是否已经离开了开始按下的键
+
+static HBITMAP g_hBitmap = NULL;  // 当前键盘的位图句柄
+static HBITMAP g_hInvertBitmap = NULL; // 当前按下位图的句柄
+
+// *******************************************************
+// 函数定义区
+// *******************************************************
+static int eng_Who(void);
+static void eng_Create(void);
+static void eng_Destroy(void);
+static void eng_Resume(void);
+static int eng_DoPAINT( HWND, HDC );
+static int eng_DoLBUTTONDOWN( HWND, int x, int y );
+static int eng_DoLBUTTONUP( HWND, int x, int y );
+static int eng_DoMOUSEMOVE( HWND, int x, int y );
+static BOOL eng_GetKeyValue( WORD * lpKey );
+static void eng_GetKeyRect( int row, int col, LPRECT lprect );
+
+static KEYENTRY *GetKey(int x,int y,RECT *lprect);
+static BOOL GetVirtualKeyRect(BYTE bVk, RECT *lprect);
+static void DrawSystemKey(HWND hWnd,HDC hdc,BYTE bVk);
+
+static void ShowKeyboardrect(HWND hWnd,HDC hdc,RECT rect,DWORD dwShowStyle);
+
+void KB_DrawBitMap(HDC hdc,HBITMAP hBitmap,RECT rect,UINT xOffset,UINT yOffset,DWORD dwRop);
+extern void StartMoveKeyboard(HWND hWnd , int x,int y);
+extern void MoveKeyboard(HWND hWnd , int x,int y);
+extern void EndMoveKeyboard(HWND hWnd);
+extern BOOL KeyboardMoving(HWND hWnd);
+
+// 定义英文键盘函数
+const KEYDRV engKeyboard = {
+	eng_Who,
+	eng_Create,
+	eng_Destroy,
+	eng_Resume,
+	eng_DoPAINT,
+	eng_DoLBUTTONDOWN,
+	eng_DoLBUTTONUP,
+	eng_DoMOUSEMOVE,
+    eng_GetKeyValue };
+
+
+// **************************************************
+// 声明：static int eng_Who(void)
+// 参数：
+// 	无
+// 返回值：返回当前键盘的标识。
+// 功能描述：
+// 引用: 
+// **************************************************
+static int eng_Who(void)
+{
+	return 1;
+}
+
+// **************************************************
+// 声明：static void eng_Create(void)
+// 参数：
+// 	无
+// 返回值：无
+// 功能描述：创建键盘。
+// 引用: 
+// **************************************************
+static void eng_Create(void)
+{
+	eng_Resume(); // 恢复键盘
+}
+
+// **************************************************
+// 声明：static void eng_Destroy(void)
+// 参数：
+// 	无
+// 返回值：无
+// 功能描述：破坏键盘。
+// 引用: 
+// **************************************************
+static void eng_Destroy(void)
+{
+	if (g_hBitmap != NULL)
+	{ // 已经装载键盘位图
+		DeleteObject(g_hBitmap); // 删除位图句柄
+		g_hBitmap = NULL;
+	}
+	if (g_hInvertBitmap != NULL)
+	{ // 已经装载按下状态键盘位图
+		DeleteObject(g_hInvertBitmap);  // 删除位图句柄
+		g_hInvertBitmap = NULL;
+	}
+}
+
+// **************************************************
+// 声明：static void eng_Resume(void)
+// 参数：
+// 	无
+// 返回值：无
+// 功能描述：恢复键盘。
+// 引用: 
+// **************************************************
+static void eng_Resume(void)
+{
+//	eng_Count = 0;
+  SetRect(&eng_HitRect,0,0,0,0);  // 设置键盘的按键状态为空
+}
+
+// **************************************************
+// 声明：static KEYENTRY *GetKey(int x,int y,RECT *lprect)
+// 参数：
+// 	IN x -- X坐标
+// 	IN y -- Y坐标
+// 	OUT lprect -- 返回按键的矩形
+// 
+// 返回值：返回当前按下的键的结构指针
+// 功能描述：根据坐标位置得到按下的键的指针
+// 引用: 
+// **************************************************
+static KEYENTRY *GetKey(int x,int y,RECT *lprect)
+{
+	int iRow=0,iColumn=0;
+
+		if (y < 0)
+			return NULL;
+		// 得到当前按下的位置在键盘的第几行
+		while(1)
+		{
+//			if (y < (iRow+1)*BLK_HEIGHT)
+			if (y < g_RowHeightList[iRow+1]) // 当前Y坐标在是否在下一行的数据
+				break; 
+			iRow ++;
+			if (iRow >=ROW_NUM)  // 已经到最后一行
+				return NULL; // 没有按到任何键
+		}
+		// 得到当前按下的位置在键盘的指定行的那一列
+		while(1)
+		{
+			if ( x < g_engkeys[0][iRow][iColumn].iLeft + g_engkeys[0][iRow][iColumn].iWidth) // 是否在指定的列
+				break;
+			
+			iColumn ++;
+			if (g_engkeys[0][iRow][iColumn].bVk == NONEKEY)  // 没有任何按键
+				return NULL;
+		}
+		// 已经找到指定的列
+		if (lprect != NULL)
+		{ // 得到指定按键的矩形
+			lprect->left = g_engkeys[0][iRow][iColumn].iLeft;
+			lprect->right = lprect->left + g_engkeys[0][iRow][iColumn].iWidth;
+			lprect->top = g_RowHeightList[iRow];
+			lprect->bottom = g_RowHeightList[iRow+1]-1;
+		}
+		return &g_engkeys[0][iRow][iColumn];  // 返回按键的指针
+}
+
+#define KEYEVENTF_KEYDOWN 0
+
+// **************************************************
+// 声明：static int eng_DoLBUTTONDOWN( HWND hWnd, int x, int y )
+// 参数：
+// 	IN hWnd -- 窗口句柄
+// 	IN x -- X坐标
+// 	IN y -- Y坐标
+// 
+// 返回值：无
+// 功能描述：鼠标左键按下。
+// 引用: 
+// **************************************************
+static int eng_DoLBUTTONDOWN( HWND hWnd, int x, int y )
+{
+	RECT rect;
+	HDC hdc;
+	KEYENTRY *lpKey;
+
+		if (IsRectEmpty(&eng_HitRect) == 0)
+		{ // 不是空矩形
+			hdc = GetDC( hWnd );
+			ShowKeyboardrect(hWnd,hdc,eng_HitRect,NORMALSHOW); // 恢复原来按键的显示
+			ReleaseDC( hWnd, hdc );
+			SetRect(&eng_HitRect,0,0,0,0);  // 设置为空矩形
+		}
+
+		// 得到指定位置的键
+		lpKey = GetKey(x,y,&rect);
+		if (lpKey == NULL)
+			return FALSE; // 没有键
+		if (lpKey->bVk == VK_MOVE)
+		{ // 当前按键是拖动键盘移动
+			StartMoveKeyboard(hWnd,x,y); // 开始移动键盘
+			return TRUE;
+		}
+
+		eng_HitRect = rect; // 设置按下键的矩形
+		eng_lpHitKey = lpKey; // 设置按下的键
+		hdc = GetDC( hWnd );
+		//InvertRect(hdc,&rect);
+		ShowKeyboardrect(hWnd,hdc,rect,INVERTSHOW);  // 显示当前按键为按下状态
+		ReleaseDC( hWnd, hdc );
+		g_bCursorLeft = FALSE; // 没有离开当前的按键
+
+		if (lpKey->bVk == VK_SHIFT)
+		{ // 当前按键为SHIFT
+			if (Eng_KeyBroad_Shift == TRUE)
+			{  // 已经按下了SHIFT
+				keybd_event(VK_SHIFT,0,KEYEVENTF_KEYUP,0);  // 释放SHIFT
+				g_iBitmapIndex = 0; // 恢复键盘位图为0号索引，一般键盘
+				Eng_KeyBroad_Shift = FALSE; // 设置SHIFT弹起
+			}
+			else
+			{ // 还没有按下SHIFT
+				keybd_event(VK_SHIFT,0,KEYEVENTF_KEYDOWN,0x80000000); // 按下SHIFT
+				g_iBitmapIndex =1; // 设置键盘位图为1号，大写键盘
+				Eng_KeyBroad_Shift = TRUE; // 设置SHIFT按下
+			}
+			SetRect(&eng_HitRect,0,0,0,0); // 设置按下键盘矩形为空
+			InvalidateRect(hWnd,NULL,TRUE); // 重画键盘
+			return 0;
+		}
+		else if (lpKey->bVk == VK_CAPITAL)
+		{ // 按下键是CAPS
+			if (Eng_KeyBroad_Capital==TRUE)
+			{ // 已经按下CAPS
+				Eng_KeyBroad_Capital = FALSE;  // 设置CAPS弹起
+				hdc = GetDC( hWnd );
+				ShowKeyboardrect(hWnd,hdc,eng_HitRect,NORMALSHOW); //恢复CAPS键的显示
+				SetRect(&eng_HitRect,0,0,0,0); // 设置当前按下键矩形为空
+				ReleaseDC( hWnd, hdc );
+			}
+			else
+			{ // 还没有按下CAPS键
+				Eng_KeyBroad_Capital = TRUE;  // 设置CAPS按下
+				SetRect(&eng_HitRect,0,0,0,0); // 设置当前按下键矩形为空
+			}
+			return 0;
+//			 Eng_KeyBroad_Flag=1-Eng_KeyBroad_Flag;
+//			 DrawCapitalState(hdc ,Eng_KeyBroad_Flag);
+//			_Msg_PutSoftKeybrdEvent( eng_KeyHit[0], eng_KeyHit[0], 0);
+		}
+		else if (lpKey->bVk == VK_CASE)
+		{ // 当前按键是CASE键
+		}
+		else if (lpKey->bVk==VK_TURN)
+		{ // 当前按键是TURN键 ，转换键盘键
+		}
+		else
+		{ // 是一般键
+			TCHAR chChar;
+			if (Eng_KeyBroad_Shift == TRUE)
+			{  // SHIFT按下
+				chChar=lpKey->cShift;
+				if (Eng_KeyBroad_Capital==TRUE&&(chChar>='A'&&chChar<='Z'))
+				{ // 按下CAPS，如果原来是大写字符，则要转化成小写字符
+					chChar+=0x20;
+				}
+			}
+			else
+			{  // SHIFT没有按下
+				chChar=lpKey->cUnshift;
+				if (Eng_KeyBroad_Capital==TRUE&&(chChar>='a'&&chChar<='z'))
+				{  // 按下CAPS，如果原来是小写字符，则要转化成大写字符
+					chChar-=0x20;
+				}
+			}
+//			_Msg_PutSoftKeybrdEvent( (BYTE)VkKeyScan(chChar), (WORD)chChar, 0);
+//			_Msg_PutSoftKeybrdEvent( lpKey->bVk, (WORD)chChar, 0);
+			keybd_event(lpKey->bVk,0,KEYEVENTF_KEYDOWN,0x80000000);  // 发送一个键按下
+			keybd_event(chChar,0,KEYEVENTF_CHAR,0); // 发送一个字符消息
+			keybd_event(lpKey->bVk,0,KEYEVENTF_KEYUP,0); // 发送一个键弹起
+			if (Eng_KeyBroad_Shift == TRUE)
+			{  // SHIFT按下
+				keybd_event(VK_SHIFT,0,KEYEVENTF_KEYUP,0);  // 弹起SHIFT按键
+				g_iBitmapIndex = 0; // 设置键盘位图为0号
+				Eng_KeyBroad_Shift = FALSE; // 设置SHIFT没有按下
+				InvalidateRect(hWnd,NULL,TRUE);  // 重新显示当前键盘
+			    SetRect(&eng_HitRect,0,0,0,0); // 设置按下键的矩形为空
+			}
+		}
+		return 0;
+}
+
+// **************************************************
+// 声明：static int eng_DoLBUTTONUP( HWND hWnd, int x, int y )
+// 参数：
+// 	IN hWnd -- 窗口句柄
+// 	IN x -- X坐标
+// 	IN y -- Y坐标
+// 
+// 返回值：无效
+// 功能描述：处理鼠标左键弹起。
+// 引用: 
+// **************************************************
+static int eng_DoLBUTTONUP( HWND hWnd, int x, int y )
+{
+	HDC hdc;
+	RECT rect;
+
+	KEYENTRY *lpKey;
+
+		if (KeyboardMoving(hWnd) == TRUE)
+		{  // 键盘在移动状态
+			EndMoveKeyboard(hWnd); // 结束键盘移动
+			return TRUE; // 返回
+		}
+		if (g_bCursorLeft ==TRUE) // 鼠标已经离开按下的键，不要做任何处理
+			return TRUE;
+		// 得到指定位置的键
+		lpKey = GetKey(x,y,&rect);  // 得到键值
+		if (lpKey == NULL)
+			return FALSE; // 没有任何键
+		if (eng_lpHitKey !=NULL)
+		{  // 按下的键不为空
+			if (eng_lpHitKey->bVk == VK_SHIFT)
+				return 0;  // SHIFT键，不要做任何处理
+			if (eng_lpHitKey->bVk == VK_CAPITAL)
+				return 0; // CAPS键，不要做任何处理
+			hdc = GetDC( hWnd );
+//			InvertRect(hdc,&eng_HitRect);
+//			ShowKeyboardrect(hWnd,hdc,rect,NORMALSHOW);
+			ShowKeyboardrect(hWnd,hdc,eng_HitRect,NORMALSHOW); // 恢复按下的键
+			ReleaseDC( hWnd, hdc );
+			SetRect(&eng_HitRect,0,0,0,0);  // 设置按下的键矩形为空
+		}
+
+		if (lpKey->bVk == VK_TURN)
+		{  // 键盘转换键
+		   SendMessage(hWnd,KM_SETNEXTKEY,0,0); // 转换到下一个文件
+		}
+
+		eng_lpHitKey = NULL;    // 已经没有按下的键
+		return 0;
+}
+
+// **************************************************
+// 声明：static int eng_DoMOUSEMOVE( HWND hWnd, int x, int y )
+// 参数：
+// 	IN hWnd -- 窗口句柄
+// 	IN x -- X坐标
+// 	IN y -- Y坐标
+// 
+// 返回值：无效
+// 功能描述：处理按着鼠标左键移动。
+// 引用: 
+// **************************************************
+static int eng_DoMOUSEMOVE( HWND hWnd, int x, int y )
+{
+	KEYENTRY *lpKey;
+	RECT rect;
+	HDC hdc;
+
+		if (KeyboardMoving(hWnd) == TRUE)
+		{  // 键盘在移动状态
+			MoveKeyboard(hWnd,x,y);  // 移动键盘
+			return TRUE;
+		}
+		if (eng_lpHitKey == NULL)
+			return FALSE; // 没有按下的键
+		// 得到指定位置的键
+		lpKey = GetKey(x,y,&rect);
+		if (lpKey != eng_lpHitKey)
+		{  // 当前的键与按下的键不同
+			if (g_bCursorLeft == TRUE)  // 已经离开了按下的键
+				return TRUE; // 不需要处理
+			hdc = GetDC( hWnd );
+			if ((eng_lpHitKey->bVk != VK_SHIFT) &&(eng_lpHitKey->bVk != VK_CAPITAL))
+			{  // 按下的键不是SHIFT和CAPS键
+//				InvertRect(hdc,&eng_HitRect);
+				ShowKeyboardrect(hWnd,hdc,eng_HitRect,NORMALSHOW); // 恢复按下键的状态
+			}
+			ReleaseDC( hWnd, hdc );
+			g_bCursorLeft = TRUE; // 设置键已经离开原来按下的键
+		}
+		else
+		{ // 当前的键与按下的键相同
+			if (g_bCursorLeft == FALSE) // 还没有离开按下的键
+				return TRUE;
+			// 鼠标离开原来按下的键后又回到原来的按键位置
+			hdc = GetDC( hWnd );
+			if ((eng_lpHitKey->bVk != VK_SHIFT) &&(eng_lpHitKey->bVk != VK_CAPITAL))
+			{ // 按下的键不是SHIFT和CAPS键
+//				InvertRect(hdc,&eng_HitRect);
+				ShowKeyboardrect(hWnd,hdc,eng_HitRect,INVERTSHOW); // 显示键为按下的状态
+			}
+			ReleaseDC( hWnd, hdc );	
+			g_bCursorLeft = FALSE; // 设置键在原来按下的位置
+		}
+		return 0;
+}
+
+// **************************************************
+// 声明：static int eng_DoPAINT( HWND hWnd, HDC hdc )
+// 参数：
+// 	IN hWnd -- 窗口句柄
+// 	IN hdc -- 设备句柄
+// 
+// 返回值： 无
+// 功能描述：绘制英文键盘。
+// 引用: 
+// **************************************************
+static int eng_DoPAINT( HWND hWnd, HDC hdc )
+{
+  RECT rect={0,0,KBDBMPWIDTH,KBDBMPHEIGHT};
+  int iStarty = g_iBitmapIndex*KBDBMPHEIGHT ;
+//  HBITMAP hBitMap;
+
+	  if (g_hBitmap == NULL)
+	  {  // 还没有加载图象句柄
+		  HINSTANCE hInstance;
+
+		  hInstance = (HINSTANCE)GetWindowLong(hWnd,GWL_HINSTANCE); // 得到实例句柄
+		  //g_hBitmap = LoadImage( 0, "\\System\\Keyboard1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+		  g_hBitmap = LoadImage( 0, "\\程序\\eng1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+//		  g_hBitmap = LoadImage( hInstance, MAKEINTRESOURCE(IDB_ENGNORMAL), IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE ) ; // 装载英文键盘位图
+		  if( g_hBitmap == 0 )
+			return 0;  // 装载失败
+	  }
+	  KB_DrawBitMap(hdc,(HBITMAP)g_hBitmap,rect,0,iStarty,SRCCOPY); // 绘制键盘
+//	  DrawCaseState(hdc ,Eng_KeyBroad_Case);
+//	  if (!IsRectEmpty(&eng_HitRect))
+//		 InvertRect(hdc,&eng_HitRect);
+//	  DeleteObject(hBitMap);
+	  DrawSystemKey(hWnd,hdc,VK_SHIFT); // 绘制SHIFT键状态
+	  DrawSystemKey(hWnd,hdc,VK_CAPITAL); // 绘制CAPS键状态
+	  return 0;
+}
+// **************************************************
+// 声明：void KB_DrawBitMap(HDC hdc,HBITMAP hBitmap,RECT rect,UINT xOffset,UINT yOffset,DWORD dwRop)
+// 参数：
+// 	IN hdc -- 设备句柄
+// 	IN hBitmap -- 位图句柄
+// 	IN rect -- 位图矩形
+// 	IN xOffset -- X坐标偏移
+// 	IN yOffset -- Y坐标偏移
+// 	IN dwRop -- 绘制模式
+// 
+// 返回值：无
+// 功能描述：绘制位图。
+// 引用: 
+// **************************************************
+void KB_DrawBitMap(HDC hdc,HBITMAP hBitmap,RECT rect,UINT xOffset,UINT yOffset,DWORD dwRop)
+{
+		HDC hMemoryDC;
+    HBITMAP hOldBitmap;
+
+		hMemoryDC=CreateCompatibleDC(hdc);  // 创建兼容DC
+		hOldBitmap=SelectObject(hMemoryDC,hBitmap); // 将要绘制的位图选择到DC
+		// 绘制位图
+		BitBlt( hdc, // handle to destination device context
+			(short)rect.left,  // x-coordinate of destination rectangle's upper-left
+									 // corner
+			(short)rect.top,  // y-coordinate of destination rectangle's upper-left
+									 // corner
+			(short)(rect.right-rect.left),  // width of destination rectangle
+			(short)(rect.bottom-rect.top), // height of destination rectangle
+			hMemoryDC,  // handle to source device context
+			(short)xOffset,   // x-coordinate of source rectangle's upper-left
+									 // corner
+			(short)yOffset,   // y-coordinate of source rectangle's upper-left
+									 // corner
+
+			dwRop
+			);
+
+		SelectObject(hMemoryDC,hOldBitmap); // 恢复位图句柄
+		DeleteDC(hMemoryDC); // 删除DC
+}
+// **************************************************
+// 声明：static BOOL eng_GetKeyValue( WORD * lpKey )
+// 参数：
+// 	OUT lpKey -- 得到当前按键的值
+// 
+// 返回值：成功返回TRUE，否则返回FALSE
+// 功能描述：得到当前按键的值。
+// 引用: 
+// **************************************************
+static BOOL eng_GetKeyValue( WORD * lpKey )
+{
+	if( eng_lpHitKey )
+	{  // 有键按下
+		*lpKey = eng_lpHitKey->bVk; // 返回当前按键的值
+		return TRUE;
+	}
+	else
+		return FALSE; // 返回失败
+}
+
+
+// **************************************************
+// 声明：static void DrawSystemKey(HWND hWnd,HDC hdc,BYTE bVk)
+// 参数：
+// 	IN hWnd -- 窗口句柄
+// 	IN hdc -- 设备句柄
+// 	IN bVk -- 系统键的键值
+// 
+// 返回值：无
+// 功能描述：绘制系统键的状态。
+// 引用: 
+// **************************************************
+static void DrawSystemKey(HWND hWnd,HDC hdc,BYTE bVk)
+{
+	RECT rect;
+	int iOffsetx,iOffsety;
+//	HBITMAP hBitMap;
+
+		if (bVk == VK_CAPITAL)
+		{ // 是CAPS
+			if (Eng_KeyBroad_Capital == TRUE)
+			{ // CAPS按下
+				// 画CAP按键为反白按键
+				if (GetVirtualKeyRect(VK_CAPITAL,&rect) == TRUE) // 得到键的位置
+				{
+					goto DRAWRECT;  // 绘制矩形
+				}
+			}
+		}
+		else if (bVk == VK_SHIFT)
+		{ // 是SHIFT键
+			if (Eng_KeyBroad_Shift == TRUE)
+			{ // SHIFT键按下
+				// 画SHIFT按键为反白按键
+				if (GetVirtualKeyRect(VK_SHIFT,&rect) == TRUE)  // 得到键的位置
+				{
+					goto DRAWRECT; // 绘制矩形
+				}
+			}
+		}
+		return;
+
+DRAWRECT:
+
+		iOffsetx = rect.left;
+		iOffsety = rect.top + g_iBitmapIndex*KBDBMPHEIGHT ; // 得到Y偏移
+/*		if (g_hBitmap == NULL)
+		{
+			//g_hBitmap = LoadImage( 0, "\\System\\Keyboard1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+			g_hBitmap = LoadImage( (HINSTANCE)GetWindowLong(hWnd,GWL_HINSTANCE), MAKEINTRESOURCE(IDB_ENGNORMAL), IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE ) ;
+			if( g_hBitmap == 0 )
+				return ;
+		}
+		KB_DrawBitMap(hdc,(HBITMAP)g_hBitmap,rect,iOffsetx,iOffsety,NOTSRCCOPY);
+*/
+		if (g_hInvertBitmap == NULL)
+		{  // 没有装载选择位图
+			  //g_hInvertBitmap = LoadImage( 0, "\\System\\Keyboard2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+//			  g_hInvertBitmap = LoadImage( (HINSTANCE)GetWindowLong(hWnd,GWL_HINSTANCE), MAKEINTRESOURCE(IDB_ENGSEL), IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE ) ; // 装载选择位图
+			  g_hInvertBitmap = LoadImage( 0, "\\程序\\eng2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+			  if( g_hInvertBitmap == 0 )
+				return ;
+		}
+		
+		KB_DrawBitMap(hdc,(HBITMAP)g_hInvertBitmap,rect,iOffsetx,iOffsety,SRCCOPY); // 绘制矩形位图
+//		DeleteObject(hBitMap);
+}
+
+// **************************************************
+// 声明：static BOOL GetVirtualKeyRect(BYTE bVk, RECT *lprect)
+// 参数：
+// 	IN bVk -- 指定的虚键
+// 	OUT lprect -- 返回该键的矩形位置
+// 
+// 返回值：成功返回TRUE，否则返回FALSE
+// 功能描述：得到指定虚键的坐标位置。
+// 引用: 
+// **************************************************
+static BOOL GetVirtualKeyRect(BYTE bVk, RECT *lprect)
+{
+	int iRow=0,iColumn=0;
+
+		for (iRow = 0; iRow < ROW_NUM; iRow ++)
+		{ // 从第一行搜索到最后一行
+			iColumn=0;
+			while(1)
+			{ // 搜索没一行的每一个键
+				if ( bVk == g_engkeys[0][iRow][iColumn].bVk)
+				{ // 是要找的键
+					if (lprect != NULL)
+					{  // 得到矩形位置
+						lprect->left = g_engkeys[0][iRow][iColumn].iLeft;
+						lprect->right = lprect->left + g_engkeys[0][iRow][iColumn].iWidth;
+						lprect->top = g_RowHeightList[iRow];
+						lprect->bottom = g_RowHeightList[iRow+1]-1;
+					}
+					return TRUE;
+				}
+				
+				iColumn ++; // 下一个键
+				if (g_engkeys[0][iRow][iColumn].bVk == NONEKEY)
+					break; // 已经没有键
+			}
+		}
+		return FALSE;
+}
+
+// **************************************************
+// 声明：static void ShowKeyboardrect(HWND hWnd,HDC hdc,RECT rect,DWORD dwShowStyle)
+// 参数：
+// 	IN hWnd -- 窗口句柄
+// 	IN hdc -- 设备句柄
+// 	IN rect -- 要显示的矩形
+// 	IN dwShowStyle -- 显示状态
+// 
+// 返回值：无
+// 功能描述：显示键盘的指定区域的位图。
+// 引用: 
+// **************************************************
+static void ShowKeyboardrect(HWND hWnd,HDC hdc,RECT rect,DWORD dwShowStyle)
+{
+  int iStarty = g_iBitmapIndex*KBDBMPHEIGHT ; // 得到当前键盘的起始位置
+
+	if (g_hBitmap == NULL)
+	{  // 没有装载键盘位图
+		  //g_hBitmap = LoadImage( 0, "\\System\\Keyboard1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+		  g_hBitmap = LoadImage( 0, "\\程序\\eng1.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+//		  g_hBitmap = LoadImage( (HINSTANCE)GetWindowLong(hWnd,GWL_HINSTANCE), MAKEINTRESOURCE(IDB_ENGNORMAL), IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE ) ; // 装载位图句柄
+		  if( g_hBitmap == 0 )
+			return ;
+	}
+	if (g_hInvertBitmap == NULL)
+	{ // 没有装载选择位图
+		  //g_hInvertBitmap = LoadImage( 0, "\\System\\Keyboard2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+//		  g_hInvertBitmap = LoadImage( (HINSTANCE)GetWindowLong(hWnd,GWL_HINSTANCE), MAKEINTRESOURCE(IDB_ENGSEL), IMAGE_BITMAP, 0, 0, LR_DEFAULTSIZE ) ;// 装载位图句柄
+		  g_hInvertBitmap = LoadImage( 0, "\\程序\\eng2.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE ) ;
+		  if( g_hInvertBitmap == 0 )
+			return ;
+	}
+	
+	if (dwShowStyle == NORMALSHOW)  // 通常显示
+		KB_DrawBitMap(hdc,(HBITMAP)g_hBitmap,rect,rect.left + 0,rect.top + iStarty,SRCCOPY);
+	else // 选择（反白）显示
+		KB_DrawBitMap(hdc,(HBITMAP)g_hInvertBitmap,rect,rect.left + 0,rect.top + iStarty,SRCCOPY);
+}

@@ -1,0 +1,6 @@
+rm bootloader.map
+rm bootloader.bin
+mv /cygdrive/e/kingbuilder/kingmos/sdk/target/armv4t/release/bootloader.exe ./bootloader.exe
+makeimg -rs -b bootloader.bin -m bootloader.map -c ./config
+cp bootloader.map /cygdrive/i/tanphy/s3c2410
+

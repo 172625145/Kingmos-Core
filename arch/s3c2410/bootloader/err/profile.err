@@ -1,0 +1,4 @@
+"profile.c", line 30: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+"profile.c", line 44: Warning: C2870W: variable 'divider' declared but not used
+"profile.c", line 60: Warning: C2917W: no side effect in void context: 'unary *<expr>'
+profile.c: 3 warnings, 0 errors, 0 serious errors
